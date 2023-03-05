@@ -10,6 +10,9 @@
     "import": "./dist/index.mjs"
   },
   "packageManager": "yarn@3.4.1",
+  "dependencies": {
+    "@vanilla-extract/css": "^1.9.5"
+  },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
