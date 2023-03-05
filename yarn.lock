@@ -5,12 +5,42 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@kingmojang/app@workspace:app":
+  version: 0.0.0-use.local
+  resolution: "@kingmojang/app@workspace:app"
+  dependencies:
+    "@kingmojang/ui": "workspace:^"
+    "@kingmojang/utils": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
 "@kingmojang/monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "@kingmojang/monorepo@workspace:."
   dependencies:
     typescript: ^4.9.5
     ultra-runner: ^3.10.5
+  languageName: unknown
+  linkType: soft
+
+"@kingmojang/ui@workspace:^, @kingmojang/ui@workspace:ui":
+  version: 0.0.0-use.local
+  resolution: "@kingmojang/ui@workspace:ui"
+  languageName: unknown
+  linkType: soft
+
+"@kingmojang/utils@workspace:^, @kingmojang/utils@workspace:utils":
+  version: 0.0.0-use.local
+  resolution: "@kingmojang/utils@workspace:utils"
+  languageName: unknown
+  linkType: soft
+
+"@kingmojang/web@workspace:web":
+  version: 0.0.0-use.local
+  resolution: "@kingmojang/web@workspace:web"
+  dependencies:
+    "@kingmojang/ui": "workspace:^"
+    "@kingmojang/utils": "workspace:^"
   languageName: unknown
   linkType: soft
 

@@ -1,0 +1,9 @@
+{
+  "name": "@kingmojang/web",
+  "private": true,
+  "packageManager": "yarn@3.4.1",
+  "dependencies": {
+    "@kingmojang/ui": "workspace:^",
+    "@kingmojang/utils": "workspace:^"
+  }
+}

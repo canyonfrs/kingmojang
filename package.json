@@ -1,6 +1,18 @@
 {
   "name": "@kingmojang/monorepo",
   "private": true,
+  "workspaces": [
+    "app",
+    "ui",
+    "utils",
+    "web"
+  ],
+  "scripts": {
+    "build": "ultra -r build",
+    "dev": "ultra -r dev",
+    "setting": "yarn && yarn build",
+    "test": "ultra -r test"
+  },
   "packageManager": "yarn@3.4.1",
   "devDependencies": {
     "typescript": "^4.9.5",
