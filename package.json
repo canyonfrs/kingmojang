@@ -1,0 +1,9 @@
+{
+  "name": "@kingmojang/monorepo",
+  "private": true,
+  "packageManager": "yarn@3.4.1",
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "ultra-runner": "^3.10.5"
+  }
+}
