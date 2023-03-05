@@ -2,7 +2,9 @@
   "name": "@kingmojang/ui",
   "private": true,
   "scripts": {
-    "build": "nanobundle build"
+    "build": "yarn build:js && yarn build:type",
+    "build:js": "node ./esbuild.config.js",
+    "build:type": "tsc --emitDeclarationOnly"
   },
   "exports": {
     "types": "./dist/index.d.ts",
@@ -16,7 +18,8 @@
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "nanobundle": "^1.5.0",
+    "@vanilla-extract/esbuild-plugin": "^2.2.1",
+    "esbuild": "^0.17.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^4.9.5"

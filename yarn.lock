@@ -704,7 +704,8 @@ __metadata:
     "@types/react": ^18.0.28
     "@types/react-dom": ^18.0.11
     "@vanilla-extract/css": ^1.9.5
-    nanobundle: ^1.5.0
+    "@vanilla-extract/esbuild-plugin": ^2.2.1
+    esbuild: ^0.17.11
     react: ^18.2.0
     react-dom: ^18.2.0
     typescript: ^4.9.5
@@ -868,6 +869,15 @@ __metadata:
     media-query-parser: ^2.0.2
     outdent: ^0.8.0
   checksum: 059d4af436604dbf08240d472a0724aa3ad03a43d3d419ac77c0ba70084f9ac4b8fcd4ce1445dba609249f791fe4bd63922d0fe2101425a04db8e337c32c6bed
+  languageName: node
+  linkType: hard
+
+"@vanilla-extract/esbuild-plugin@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "@vanilla-extract/esbuild-plugin@npm:2.2.1"
+  dependencies:
+    "@vanilla-extract/integration": ^6.0.2
+  checksum: d1f88f9ac44ee53d3d888bda7aec21f0b8de3821756cf64da409fd47b0f817c3a0e4899d4594abcfe70da240cdce9fcd1ca9c21acf61d9928485b4b1f993a059
   languageName: node
   linkType: hard
 
@@ -1483,7 +1493,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.17.3":
+"esbuild@npm:^0.17.11, esbuild@npm:^0.17.3":
   version: 0.17.11
   resolution: "esbuild@npm:0.17.11"
   dependencies:
