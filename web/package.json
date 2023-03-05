@@ -2,8 +2,24 @@
   "name": "@kingmojang/web",
   "private": true,
   "packageManager": "yarn@3.4.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "@kingmojang/ui": "workspace:^",
-    "@kingmojang/utils": "workspace:^"
+    "@kingmojang/utils": "workspace:^",
+    "@vanilla-extract/css": "^1.9.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vanilla-extract/vite-plugin": "^3.8.0",
+    "@vitejs/plugin-react": "^3.1.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4"
   }
 }
