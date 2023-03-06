@@ -1,17 +1,16 @@
 {
   "name": "@kingmojang/ui",
   "private": true,
-  "scripts": {
-    "build": "yarn build:js && yarn build:type",
-    "build:js": "node ./esbuild.config.js",
-    "build:type": "tsc --emitDeclarationOnly"
-  },
   "exports": {
     "types": "./dist/index.d.ts",
     "require": "./dist/index.js",
     "import": "./dist/index.mjs"
   },
-  "packageManager": "yarn@3.4.1",
+  "scripts": {
+    "build": "yarn build:js && yarn build:type",
+    "build:js": "node ./esbuild.config.js",
+    "build:type": "tsc --emitDeclarationOnly"
+  },
   "dependencies": {
     "@vanilla-extract/css": "^1.9.5"
   },
@@ -27,5 +26,6 @@
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18"
-  }
+  },
+  "packageManager": "yarn@3.4.1"
 }

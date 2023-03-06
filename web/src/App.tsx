@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { Hello } from "@kingmojang/ui";
+import { useState } from "react";
+
 import { wrapperStyle } from "./style.css";
 
 function App() {
