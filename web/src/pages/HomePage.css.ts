@@ -7,7 +7,9 @@ export const wrapperStyle = style({
   justifyContent: "center",
 
   width: "100vw",
-  height: "100vh",
+  height: "calc(100vh - 80px - 100px)",
+
+  backgroundColor: "#F1F1F1",
 
   fontSize: "20px",
   fontWeight: "bold",
