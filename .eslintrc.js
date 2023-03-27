@@ -13,9 +13,19 @@ module.exports = {
     "json-format",
     "simple-import-sort",
   ],
-  ignorePatterns: [".eslintrc.js", "node_modules", ".vscode", "dist", "src-tauri"],
+  ignorePatterns: [
+    ".eslintrc.js",
+    "node_modules",
+    ".vscode",
+    "dist",
+    "src-tauri",
+  ],
   rules: {
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { ignoreRestSiblings: true },
+    ],
     "@typescript-eslint/consistent-type-imports": [
       "error",
       {
@@ -24,7 +34,7 @@ module.exports = {
       },
     ],
     "prettier/prettier": [
-    "error",
+      "error",
       {
         singleQuote: false,
         semi: true,

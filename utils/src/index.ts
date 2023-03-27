@@ -1,3 +1,1 @@
-export function hello() {
-  console.log("hello kingmojang");
-}
+export { del, get, post, put } from "./request";
