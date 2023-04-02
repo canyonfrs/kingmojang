@@ -1,8 +1,8 @@
 [package]
-name = "tauri-app"
-version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
+name = "kingmojang-app"
+version = "0.0.0-dev"
+description = "kingmojang desktop app"
+authors = ["junghyeonsu"]
 license = ""
 repository = ""
 edition = "2021"
