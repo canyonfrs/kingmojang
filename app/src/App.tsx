@@ -1,6 +1,5 @@
 import "./App.css";
 
-import { Hello } from "@kingmojang/ui";
 import { invoke } from "@tauri-apps/api/tauri";
 import { useState } from "react";
 
@@ -18,7 +17,6 @@ function App() {
   return (
     <div className="container">
       <h1>Welcome to Tauri!</h1>
-      <Hello />
       <div className="row">
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo vite" alt="Vite logo" />
