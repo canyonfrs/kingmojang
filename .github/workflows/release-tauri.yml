@@ -1,8 +1,8 @@
 name: Release Tauri
 on:
   push:
-    paths:
-      - app
+    # paths:
+    #   - app
   workflow_dispatch:
 
 jobs:
