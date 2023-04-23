@@ -44,18 +44,18 @@ export async function requestAPI<T>({
  *   return get('https://test.com/url', {});
  * });
  */
-export async function get<T>(url: string, config: RequestConfigType) {
+export async function get<T>(url: string, config?: RequestConfigType) {
   return requestAPI<T>({ url, method: "GET", ...config });
 }
 
-export async function post<T>(url: string, config: RequestConfigType) {
+export async function post<T>(url: string, config?: RequestConfigType) {
   return requestAPI<T>({ url, method: "POST", ...config });
 }
 
-export async function del<T>(url: string, config: RequestConfigType) {
+export async function del<T>(url: string, config?: RequestConfigType) {
   return requestAPI<T>({ url, method: "DELETE", ...config });
 }
 
-export async function put<T>(url: string, config: RequestConfigType) {
+export async function put<T>(url: string, config?: RequestConfigType) {
   return requestAPI<T>({ url, method: "PUT", ...config });
 }
