@@ -44,21 +44,8 @@ export async function requestAPI<T>({
  *   return get('https://test.com/url', {});
  * });
  */
-export async function get<T>(
-  url: string,
-  config: Omit<RequestConfigType, "responseParser" | "errorHandler">,
-) {
-  return requestAPI<T>({
-    url,
-    method: "GET",
-    ...config,
-    errorHandler: () => {
-      throw Error();
-    },
-    responseParser: () => {
-      return {} as any;
-    },
-  });
+export async function get<T>(url: string, config: RequestConfigType) {
+  return requestAPI<T>({ url, method: "GET", ...config });
 }
 
 export async function post<T>(url: string, config: RequestConfigType) {
