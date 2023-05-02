@@ -1,7 +1,7 @@
 import { get } from "@kingmojang/utils";
 import { useQuery } from "@tanstack/react-query";
 
-import type { ICreatorInfo } from "../../types/creator";
+import type { ICreatorInfo } from "../types/creator";
 
 export function useReadCreator(memberId: number) {
   const query = useQuery<ICreatorInfo>([memberId], async () => {
