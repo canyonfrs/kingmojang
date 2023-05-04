@@ -45,8 +45,8 @@ jobs:
         run: yarn install # Change this to npm, yarn or pnpm.
 
       - name: Build the app
+        id: tauri-app-build
         uses: tauri-apps/tauri-action@v0
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -55,3 +55,6 @@ jobs:
           releaseBody: 'See the assets to download and install this version.'
           releaseDraft: true
           prerelease: false
+       
+      - name: Get Artifact Paths
+        run: echo ${{ steps.tauri-app-build.outputs.releaseUploadUrl }}
