@@ -46,7 +46,7 @@ jobs:
 
       - name: Build the app
         id: tauri-app-build
-        uses: kingmojang-app-action@v0.0.1
+        uses: kingmojang-app-action
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
