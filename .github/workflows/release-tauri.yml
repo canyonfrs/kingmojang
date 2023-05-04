@@ -55,6 +55,3 @@ jobs:
           releaseBody: 'See the assets to download and install this version.'
           releaseDraft: true
           prerelease: false
-       
-      - name: Get Artifact Paths
-        run: echo ${{ steps.tauri-app-build.outputs.releaseUploadUrl }}
