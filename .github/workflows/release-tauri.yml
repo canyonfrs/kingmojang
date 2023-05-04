@@ -46,7 +46,7 @@ jobs:
 
       - name: Build the app
         id: tauri-app-build
-        uses: canyonfrs/kingmojang-app-action@v0.0.1
+        uses: canyonfrs/kingmojang-app-action@v0.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
