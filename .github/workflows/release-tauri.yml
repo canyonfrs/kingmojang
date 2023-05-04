@@ -46,12 +46,12 @@ jobs:
 
       - name: Build the app
         id: tauri-app-build
-        uses: canyonfrs/kingmojang-app-action@v0.0.2
+        uses: canyonfrs/kingmojang-app-action@v0.0.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
-          releaseName: 'App Name v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
+          releaseName: 'Kingmojang v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
           releaseBody: 'See the assets to download and install this version.'
           releaseDraft: true
           prerelease: false
