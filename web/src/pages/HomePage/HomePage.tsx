@@ -1,4 +1,4 @@
-import { SummaryCard } from "../../components/SummaryCard/SummaryCard";
+import { SummaryCard } from "../../components";
 import * as styles from "./HomePage.css";
 
 // FIXME(@박은식): 서버 api연결 후 지워야함
