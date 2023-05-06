@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import { PATHS } from "../Router";
+import { PATHS } from "../../Router";
 import * as styles from "./Header.css";
 
-function Header() {
+export function Header() {
   return (
     <header className={styles.header}>
       <Link to={PATHS.home}>홈</Link>
@@ -12,5 +12,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

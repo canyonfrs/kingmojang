@@ -1,5 +1,5 @@
-import { wrapperStyle } from "./HomePage.css";
-import { SummaryCard } from "./SummaryCard";
+import { SummaryCard } from "../../components/SummaryCard/SummaryCard";
+import * as styles from "./HomePage.css";
 
 // FIXME(@박은식): 서버 api연결 후 지워야함
 const SUMMARY_CARD = {
@@ -21,12 +21,10 @@ const SUMMARY_CARD = {
 주펄    = 아직 게임 잘 모름 안보이는 사람 찍음`,
 } as const;
 
-function HomePage() {
+export function HomePage() {
   return (
-    <div className={wrapperStyle}>
+    <div className={styles.container}>
       <SummaryCard {...SUMMARY_CARD} />
     </div>
   );
 }
-
-export default HomePage;
