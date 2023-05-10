@@ -1,7 +1,6 @@
 import { createPortal } from "react-dom";
 
 import { background } from "./Portal.css";
-// import { modal_wrapper } from "./Portal.css";
 
 interface SectionProps {
   variant: keyof typeof background;
