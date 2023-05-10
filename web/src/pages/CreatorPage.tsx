@@ -1,7 +1,20 @@
+import LoginModal from "../components/LoginModal/LoginModal";
+import useModal from "../hooks/useModal";
 import { wrapperStyle } from "./HomePage.css";
 
 function CreatorPage() {
-  return <div className={wrapperStyle}>크리에이터 페이지</div>;
+  const { Portal, open } = useModal();
+
+  return (
+    <div className={wrapperStyle}>
+      <div>
+        <button onClick={open}>open modal</button>
+        <Portal>
+          <LoginModal />
+        </Portal>
+      </div>
+    </div>
+  );
 }
 
 export default CreatorPage;
