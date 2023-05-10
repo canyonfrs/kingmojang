@@ -1,4 +1,5 @@
 import "../src/styles/global.css";
+import "@kingmojang/ui/dist/index.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";

@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom";
+import { Button } from "@kingmojang/ui";
 
-import { PATHS } from "../Router";
-import * as styles from "./Header.css";
+import * as Style from "./Header.css";
+import { SearchBox } from "./SearchBox";
 
 function Header() {
   return (
-    <header className={styles.header}>
-      <Link to={PATHS.home}>홈</Link>
-      <Link to={PATHS.creator}>크리에이터</Link>
-      <Link to={PATHS.kingmojang}>킹모장</Link>
+    <header className={Style.HeaderStyle}>
+      <div className={Style.LogoStyle}>킹모장</div>
+      <div className={Style.SearchBoxWraper}>
+        <SearchBox />
+      </div>
+      <div className={Style.ButtonWrapper}>
+        <Button className={Style.SigninButtonStyle}>로그인</Button>
+        <Button className={Style.SignupButtonStyle}>회원가입</Button>
+      </div>
     </header>
   );
 }
