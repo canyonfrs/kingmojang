@@ -7,15 +7,8 @@ export const modal_wrapper = style({
   position: "fixed",
   top: 0,
   left: 0,
-  backgroundColor: "rgba(0,0,0,0.3)",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-});
-
-export const modal = style({
-  // width: 380,
-  // padding: 20,
-  // backgroundColor: "#fff",
-  // margin: "80px auto",
+  backgroundColor: "rgba(128, 128, 128, 0.8)",
 });
