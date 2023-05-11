@@ -12,7 +12,7 @@ export interface RequestAPIType extends AxiosRequestConfig {
 export type RequestConfigType = Omit<RequestAPIType, "url" | "method">;
 
 const BASE_URL = {
-  dev: "",
+  dev: "http://localhost:8080/api/v1/",
   prod: "",
 } as const;
 
