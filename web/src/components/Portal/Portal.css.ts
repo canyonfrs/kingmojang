@@ -7,7 +7,6 @@ export const base = style({
   right: 0,
   overflow: "hidden",
   position: "fixed",
-  backgroundColor: "rgba(0,0,0,0.3)",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
