@@ -14,20 +14,31 @@ import {
   p,
   socialLogin,
 } from "./LoginModal.css";
+interface LoginModalProps {
+  close: () => void;
+}
 
-export default function LoginModal() {
-  const submit = () => {
+export default function LoginModal({ close }: LoginModalProps) {
+  const SocialLoginLogo = [
+    { src: Twitch, href: "", alt: "Twitch 로그인" },
+    { src: Google, href: "", alt: "Google 로그인" },
+    { src: Naver, href: "", alt: "Naver 로그인" },
+    { src: KaKao, href: "", alt: "KaKao 로그인" },
+  ];
+
+  const submit = (ev: React.FormEvent) => {
+    ev.preventDefault();
     console.log("a");
+    close();
   };
+
   return (
     <div className={modal}>
       <img src={Logo} alt="킹모장 로고" />
-      <Form className={form}>
+      <Form className={form} onSubmit={submit}>
         <TextField placeholder="아이디" className={input} />
         <TextField placeholder="비밀번호" className={input} />
-        <button className={loginBtn} onSubmit={submit}>
-          로그인
-        </button>
+        <button className={loginBtn}>로그인</button>
       </Form>
       <div className={info}>
         <p className={p}>아이디가 없나요?</p>
@@ -35,10 +46,11 @@ export default function LoginModal() {
       </div>
       <div className={p}>소셜 로그인</div>
       <div className={socialLogin}>
-        <img src={Twitch} alt="트위치 로그인" />
-        <img src={Google} alt="구글 로그인" />
-        <img src={Naver} alt="네이버 로그인" />
-        <img src={KaKao} alt="카카오 로그인" />
+        {SocialLoginLogo.map((e) => (
+          <a href={e.href}>
+            <img src={e.src} alt={e.alt} style={{ cursor: "pointer" }} />
+          </a>
+        ))}
       </div>
     </div>
   );
