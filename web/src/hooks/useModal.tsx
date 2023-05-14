@@ -15,8 +15,19 @@ const useModal = () => {
 
   return {
     Portal: isOpen
-      ? ({ children }: { children: React.ReactNode }) => (
-          <Portal onClose={close}>{children}</Portal>
+      ? ({
+          children,
+          hasBackground,
+        }: {
+          children: React.ReactNode;
+          hasBackground: boolean;
+        }) => (
+          <Portal
+            onClose={close}
+            variant={hasBackground ? "hasDimmer" : "noDimmer"}
+          >
+            {children}
+          </Portal>
         )
       : () => null,
     open,

@@ -9,7 +9,7 @@ function CreatorPage() {
     <div className={wrapperStyle}>
       <div>
         <button onClick={open}>open modal</button>
-        <Portal>
+        <Portal hasBackground={false}>
           <LoginModal />
         </Portal>
       </div>
