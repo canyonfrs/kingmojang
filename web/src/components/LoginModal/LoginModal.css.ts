@@ -67,3 +67,15 @@ export const socialLogin = style({
   justifyContent: "space-between",
   margin: "8px 0",
 });
+
+export const warning = style({
+  display: "flex",
+  alignItems: "center",
+  gap: "4px",
+  color: "#FD5959",
+  fontFamily: "Noto Sans CJK KR",
+  fontSize: "12px",
+  fontWeight: "400",
+  lineHeight: "10px",
+  textAlign: "left",
+});
