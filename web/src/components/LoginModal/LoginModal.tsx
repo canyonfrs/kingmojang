@@ -26,8 +26,7 @@ export interface ModalProps {
   id: string;
 }
 
-export default function LoginModal({ onClose, id }: ModalProps) {
-  // const { Portal } = useContext(ModalContext);
+export default function LoginModal() {
   const loginModal = useModal("login");
   const SocialLoginLogo = [
     { src: Twitch, href: "", alt: "Twitch 로그인" },
@@ -57,7 +56,11 @@ export default function LoginModal({ onClose, id }: ModalProps) {
     };
   }, []);
   return (
-    <loginModal.Modal hasBackground={true} onClose={onClose} id={id}>
+    <loginModal.Modal
+      hasBackground={true}
+      onClose={loginModal.close}
+      id="login"
+    >
       <div className={modal}>
         <img src={Logo} alt="킹모장 로고" />
         <Form className={form} onSubmit={submit}>
