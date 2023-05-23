@@ -1,5 +1,3 @@
-// import { useContext } from "react";
-
 import LoginModal from "../components/LoginModal/LoginModal";
 import TestModal from "../components/TestModal/TestModal";
 import useModal from "../hooks/useModal";

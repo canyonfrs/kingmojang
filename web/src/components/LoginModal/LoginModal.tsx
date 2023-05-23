@@ -8,8 +8,6 @@ import Logo from "../../images/Logo.svg";
 import Naver from "../../images/Naver.svg";
 import Twitch from "../../images/Twitch.svg";
 import Warn from "../../images/Warn.svg";
-// import { ModalContext } from "../ModalProvider/ModalProvider";
-// import Portal from "../Portal/Portal";
 import {
   form,
   info,
@@ -27,7 +25,7 @@ export interface ModalProps {
 }
 
 export default function LoginModal() {
-  const loginModal = useModal("login");
+  const { Modal, close } = useModal("login");
   const SocialLoginLogo = [
     { src: Twitch, href: "", alt: "Twitch 로그인" },
     { src: Google, href: "", alt: "Google 로그인" },
@@ -56,11 +54,7 @@ export default function LoginModal() {
     };
   }, []);
   return (
-    <loginModal.Modal
-      hasBackground={true}
-      onClose={loginModal.close}
-      id="login"
-    >
+    <Modal hasBackground={true} onClose={close} id="login">
       <div className={modal}>
         <img src={Logo} alt="킹모장 로고" />
         <Form className={form} onSubmit={submit}>
@@ -92,6 +86,6 @@ export default function LoginModal() {
           ))}
         </div>
       </div>
-    </loginModal.Modal>
+    </Modal>
   );
 }

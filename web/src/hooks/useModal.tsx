@@ -9,7 +9,6 @@ const useModal = (id: string) => {
 
   const open = useCallback(() => {
     context?.setCurrentModal(id);
-    console.log(context);
   }, []);
 
   const close = useCallback(() => {
