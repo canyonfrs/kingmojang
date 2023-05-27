@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import * as Style from "./SummaryCard.css";
 
 // NOT(@박은식): 받는 prop구조는 서버에서 내려오는 데이터에 따라 변경 가능
-interface SummaryCardProps {
+export interface SummaryCardProps {
   createrName: string;
   createdDate: Date;
   profileImageSrc: string;
