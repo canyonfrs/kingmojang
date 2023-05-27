@@ -1,4 +1,5 @@
 import "../src/styles/global.css";
+import "@kingmojang/ui/dist/index.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
