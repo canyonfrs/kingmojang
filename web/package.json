@@ -9,12 +9,14 @@
   "dependencies": {
     "@kingmojang/ui": "workspace:^",
     "@kingmojang/utils": "workspace:^",
+    "@tanstack/react-query": "^4.29.5",
     "@vanilla-extract/css": "^1.9.5",
     "date-fns": "^2.29.3",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.9.0"
+    "react-router-dom": "^6.9.0",
+    "zustand": "^4.3.7"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

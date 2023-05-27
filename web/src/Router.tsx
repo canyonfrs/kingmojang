@@ -5,9 +5,7 @@ import {
 } from "react-router-dom";
 
 import Layout from "./Layout";
-import CreatorPage from "./pages/CreatorPage";
-import HomePage from "./pages/HomePage";
-import KingmojangPage from "./pages/KingmojangPage";
+import { CreatorPage, HomePage, KingmojangPage } from "./pages";
 
 export const PATHS = {
   home: "/",

@@ -1,9 +1,9 @@
 import { Button } from "@kingmojang/ui";
 
+import { SearchBox } from "../SearchBox";
 import * as Style from "./Header.css";
-import { SearchBox } from "./SearchBox";
 
-function Header() {
+export function Header() {
   return (
     <header className={Style.HeaderStyle}>
       <div className={Style.LogoStyle}>킹모장</div>
@@ -17,5 +17,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

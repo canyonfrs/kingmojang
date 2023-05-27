@@ -1,13 +1,12 @@
 import type { PropsWithChildren } from "react";
 
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import { Footer, Header } from "./components";
 
 function Layout({ children }: PropsWithChildren) {
   return (
     <div>
       <Header />
-      <main>{children}</main>
+      <main id="portalTarget">{children}</main>
       <Footer />
     </div>
   );
