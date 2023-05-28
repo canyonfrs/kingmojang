@@ -27,4 +27,5 @@ function AsyncBoundary({
   );
 }
 
-export default AsyncBoundary;
+export { AsyncBoundary };
+export type { AsyncBoundaryProps };
