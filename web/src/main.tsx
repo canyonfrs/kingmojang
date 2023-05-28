@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import ModalProvider from "./components/ModalProvider/ModalProvider";
+import ModalProvider from "./components/contexts/ModalProvider";
 import { RouterProvider } from "./Router";
 
 const queryClient = new QueryClient();

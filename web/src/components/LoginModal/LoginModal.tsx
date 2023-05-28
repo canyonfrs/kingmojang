@@ -8,6 +8,7 @@ import Logo from "../../images/Logo.svg";
 import Naver from "../../images/Naver.svg";
 import Twitch from "../../images/Twitch.svg";
 import Warn from "../../images/Warn.svg";
+import type { ModalType } from "../../types/modal";
 import {
   form,
   info,
@@ -21,7 +22,7 @@ import {
 
 export interface ModalProps {
   onClose: () => void;
-  id: string;
+  id: ModalType;
 }
 
 export default function LoginModal() {
@@ -67,7 +68,7 @@ export default function LoginModal() {
             </div>
           ) : isError ? (
             <div className={warning}>
-              <img src={Warn} />
+              <img src={Warn} alt="warning" />
               아이디 혹은 비밀번호를 다시 확인해 주세요.
             </div>
           ) : null}

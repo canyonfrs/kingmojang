@@ -1,10 +1,11 @@
 import { useCallback, useContext } from "react";
 
-import { ModalStateContext } from "../components/ModalProvider/ModalProvider";
+import { ModalStateContext } from "../components/contexts/ModalProvider";
 import type { PortalProps } from "../components/Portal/Portal";
 import Portal from "../components/Portal/Portal";
+import type { ModalType } from "../types/modal";
 
-const useModal = (id: string) => {
+const useModal = (id: ModalType) => {
   const context = useContext(ModalStateContext);
 
   const open = useCallback(() => {
@@ -12,7 +13,7 @@ const useModal = (id: string) => {
   }, []);
 
   const close = useCallback(() => {
-    context?.setCurrentModal("");
+    context?.setCurrentModal("closed");
   }, []);
 
   return {
