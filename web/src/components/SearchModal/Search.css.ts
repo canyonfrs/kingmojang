@@ -1,5 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
+import { PRIMARY_COLOR } from "../../styles/theme.css";
+
 export const wrapper = style({
   width: "444px",
   height: "270px",
@@ -8,12 +10,21 @@ export const wrapper = style({
   gap: "4px",
 });
 
+export const input_wrapper = style({
+  position: "relative",
+});
+
+export const icon = style({
+  position: "absolute",
+  top: "12px",
+  right: "18px",
+});
 export const input = style({
   width: "100%",
   height: "42px",
   borderRadius: "8px",
   padding: "8px 18px",
-  border: "1px solid",
+  border: `2px solid ${PRIMARY_COLOR}`,
 });
 
 export const search_result = style({
@@ -25,46 +36,30 @@ export const search_result = style({
   backgroundColor: "white",
   overflowY: "auto",
   overflowX: "hidden",
-
-  // "::-webkit-scrollbar-track": {
-  //   width: "500px",
-  //   height: "30px",
-  //   color: "red",
-  //   backgroundColor: "red",
-  // },
-  // "::-webkit-scrollbar-thumb": {
-  //   width: "4px",
-  //   height: "30px",
-  //   color: "red",
-  //   backgroundColor: "red",
-  // },
+  "::-webkit-scrollbar": {
+    width: "5px",
+  },
+  "::-webkit-scrollbar-thumb": {
+    backgroundColor: "#9E9E9E",
+    height: "30px",
+    borderRadius: "100px",
+    width: "5px",
+  },
+  "::-webkit-scrollbar-track": {
+    width: "15px",
+  },
 });
-
-// const scrollbar = style({
-//   // 스크롤바 너비
-//   width: "10px",
-
-//   // 스크롤바 트랙 배경색
-//   backgroundColor: "#f1f1f1",
-
-//   // 스크롤바 슬라이더 색상
-//   "&::-webkit-scrollbar-thumb": {
-//     backgroundColor: "#888",
-//   },
-// });
 
 export const search_element = style({
   display: "flex",
   alignItems: "center",
   height: "36px",
-  //   width: "100%",
   minWidth: "50px",
-  width: "426px",
-  //   backgroundColor: "#F3F3F3",
   borderRadius: "8px",
-  padding: "4px 18px",
-  "::-webkit-scrollbar": {
-    width: "400px",
+  padding: "8px 18px",
+  width: "420px",
+  ":hover": {
+    backgroundColor: "#f3f3f3",
   },
 });
 
