@@ -1,5 +1,6 @@
 import { SummaryCard } from "../../components";
 import * as styles from "./HomePage.css";
+import { SubscribedSection } from "./SubscribedSection/SubscribedSection";
 
 // FIXME(@박은식): 서버 api연결 후 지워야함
 const SUMMARY_CARD = {
@@ -24,6 +25,7 @@ const SUMMARY_CARD = {
 export function HomePage() {
   return (
     <div className={styles.container}>
+      <SubscribedSection />
       <SummaryCard {...SUMMARY_CARD} />
     </div>
   );
