@@ -1,38 +1,32 @@
-import { useCallback, useState } from "react";
+import { useCallback, useContext } from "react";
 
+import { ModalStateContext } from "../components/contexts/ModalProvider";
+import type { PortalProps } from "../components/Portal/Portal";
 import Portal from "../components/Portal/Portal";
+import type { ModalType } from "../types/modal";
 
-const useModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const useModal = (id: ModalType) => {
+  const context = useContext(ModalStateContext);
 
   const open = useCallback(() => {
-    setIsOpen(() => true);
+    context?.setCurrentModal(id);
   }, []);
 
   const close = useCallback(() => {
-    setIsOpen(() => false);
+    context?.setCurrentModal("closed");
   }, []);
 
   return {
-    Portal: isOpen
-      ? ({
-          children,
-          hasBackground,
-        }: {
-          children: React.ReactNode;
-          hasBackground: boolean;
-        }) => (
-          <Portal
-            onClose={close}
-            variant={hasBackground ? "hasDimmer" : "noDimmer"}
-          >
-            {children}
-          </Portal>
-        )
-      : () => null,
+    Modal:
+      id === context?.currentModal
+        ? ({ children, hasBackground, id, onClose }: PortalProps) => (
+            <Portal onClose={onClose} id={id} hasBackground={hasBackground}>
+              {children}
+            </Portal>
+          )
+        : () => <></>,
     open,
     close,
-    isOpen,
   };
 };
 
