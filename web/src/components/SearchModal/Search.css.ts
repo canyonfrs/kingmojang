@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { PRIMARY_COLOR } from "../../styles/theme.css";
+import { COLOR } from "../../styles/theme.css";
 
 export const wrapper = style({
   width: "444px",
@@ -24,7 +24,7 @@ export const input = style({
   height: "42px",
   borderRadius: "8px",
   padding: "8px 18px",
-  border: `2px solid ${PRIMARY_COLOR}`,
+  border: `2px solid ${COLOR.Primary}`,
 });
 
 export const search_result = style({
@@ -50,7 +50,7 @@ export const search_result = style({
   },
 });
 
-export const search_element = style({
+export const searchElement = style({
   display: "flex",
   alignItems: "center",
   height: "36px",
@@ -63,7 +63,7 @@ export const search_element = style({
   },
 });
 
-export const search_content = style({
+export const searchContent = style({
   whiteSpace: "nowrap",
   textOverflow: "ellipsis",
   overflow: "hidden",

@@ -1,8 +1,7 @@
 import { TextField } from "@kingmojang/ui";
-import { useEffect, useState } from "react";
 
 import Search from "../../images/Search.svg";
-import { PRIMARY_COLOR } from "../../styles/theme.css";
+import { COLOR } from "../../styles/theme.css";
 import * as style from "./Search.css";
 
 function SearchResult({
@@ -12,21 +11,16 @@ function SearchResult({
   content: string;
   keyword: string;
 }) {
-  const [highlight, setHighlight] = useState(content);
-  useEffect(() => {
-    setHighlight(
-      highlight.replaceAll(
-        keyword,
-        `<span style="color: ${PRIMARY_COLOR};">${keyword}</span>`,
-      ),
-    );
-  }, []);
+  const highlightText = content.replaceAll(
+    keyword,
+    `<span style="color: ${COLOR.Primary};">${keyword}</span>`,
+  );
   return (
-    <div className={style.search_element}>
+    <div className={style.searchElement}>
       <span
-        className={style.search_content}
+        className={style.searchContent}
         dangerouslySetInnerHTML={{
-          __html: highlight,
+          __html: highlightText,
         }}
       />
     </div>

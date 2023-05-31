@@ -1,3 +1,5 @@
-const PRIMARY_COLOR = "#6358EE";
+const COLOR = {
+  Primary: "#6358EE",
+} as const;
 
-export { PRIMARY_COLOR };
+export { COLOR };
