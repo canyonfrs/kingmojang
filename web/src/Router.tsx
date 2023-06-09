@@ -18,7 +18,7 @@ export const PATHS = {
   creator: "/creator",
   kingmojang: "/kingmojang",
   signup: "/signup",
-  userSignup: "/signup/user",
+  userSignup: "/signup/usertype",
 };
 
 const withLayout = (element: React.ReactNode) => <Layout>{element}</Layout>;

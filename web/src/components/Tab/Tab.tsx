@@ -1,17 +1,77 @@
+import { Form, TextField } from "@kingmojang/ui";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import { ReactComponent as CreatorIcon } from "../../images/Creator.svg";
+import Google from "../../images/Google.svg";
+import KaKao from "../../images/KaKao.svg";
+import Naver from "../../images/Naver.svg";
+import Twitch from "../../images/Twitch.svg";
 import { ReactComponent as UserIcon } from "../../images/User.svg";
 import * as style from "./Tab.css";
 
+const API_BASE_URL = "http://3.37.238.195:8080";
+const OAUTH2_REDIRECT_SIGNUP_URI = "http://localhost:3000/creator";
+// const AUTH_URL = "/oauth2/authoirze/{소셜 로그인 제공자}?redirect_url=";
+// const a =
+//   "http://3.37.238.195:8080/oauth2/authoirze/twitch?redirect_uri=http://localhost:3000/creator";
 type UserType = "creator" | "user";
-
+const SocialLoginLogo = [
+  {
+    src: Twitch,
+    href: `${API_BASE_URL}/oauth2/authoirze/twitch`,
+    alt: "Twitch 로그인",
+  },
+  {
+    src: Google,
+    href: `/oauth2/authoirze/google?redirect_url=${OAUTH2_REDIRECT_SIGNUP_URI}`,
+    alt: "Google 로그인",
+  },
+  { src: Naver, href: "", alt: "Naver 로그인" },
+  { src: KaKao, href: "", alt: "KaKao 로그인" },
+];
 export const Tab = () => {
-  const [currentTab, clickTab] = useState<UserType>("user");
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const userType = params.get("usertype");
+  console.log("user", userType);
+
+  // const NAVER_AUTH_URL = `/oauth2/authoirze/naver?redirect_uri=`;
+  // const OAUTH2_REDIRECT_SIGNUP_URI = `http://localhost:3000/oauth2/redirect/signup`;
+  const [currentTab, clickTab] = useState<UserType>(userType as UserType);
+  const UserForm = () => {
+    return (
+      <Form className={style.form}>
+        <a
+          className="btn btn-block social-btn naver"
+          href="http://3.37.238.195:8080/oauth2/authorize/google?redirect_uri=http://localhost:3000/oauth2/redirect/signup"
+        >
+          aaaaㅁㅁㅁa
+        </a>
+        <TextField placeholder="이메일" className={style.input} />
+        <TextField placeholder="비밀번호" className={style.input} />
+        <button className={style.nextBtn}>다음 단계</button>
+        <span className={style.desciption}>또는 소셜 회원가입</span>
+        <div className={style.socialLogin}>
+          {SocialLoginLogo.map((e) => (
+            <a href={e.href} key={e.alt}>
+              <img
+                src={e.src}
+                alt={e.alt}
+                style={{ cursor: "pointer" }}
+                width={60}
+                height={60}
+              />
+            </a>
+          ))}
+        </div>
+      </Form>
+    );
+  };
 
   const menuArr = [
-    { type: "user", name: "일반유저", content: "Tab menu ONE" },
-    { type: "creator", name: "크리에이터", content: "Tab menu TWO" },
+    { type: "user", name: "일반유저", content: <UserForm /> },
+    { type: "creator", name: "크리에이터", content: <UserForm /> },
   ];
 
   const selectMenuHandler = (type: UserType) => {
@@ -23,6 +83,7 @@ export const Tab = () => {
       <div className={style.tabMenu}>
         {menuArr.map((el) => (
           <span
+            key={el.name}
             className={
               el.type === currentTab
                 ? `${style.selectedUserTab[el.type]}`
@@ -34,13 +95,13 @@ export const Tab = () => {
               <UserIcon width={32} height={32} />
             ) : (
               <CreatorIcon width={32} height={32} />
-            )}{" "}
+            )}
             {el.name}
           </span>
         ))}
       </div>
-      <div>
-        <p>{menuArr.find((item) => item.name === currentTab)?.content}</p>
+      <div className={style.contentWrapper}>
+        {menuArr.find((item) => item.type === currentTab)?.content}
       </div>
     </div>
   );
