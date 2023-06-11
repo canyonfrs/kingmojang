@@ -23,19 +23,17 @@ export const background = style({
   right: "-34.53%",
   top: "-63.06%",
   bottom: "66.94%",
-  background: "linear-gradient(90deg, #9181E9 -0.02%, #6358EE 64.42%)",
+  background: `linear-gradient(90deg, #9181E9 -0.02%, ${COLOR.Primary} 64.42%)`,
   opacity: "0.15",
   filter: "blur(100px)",
 });
+
 export const background2 = style({
   position: "absolute",
   width: "1088px",
   height: "1088px",
   left: "-850px",
   bottom: "-800px",
-
-  /* sub solor */
-
   background: `${COLOR.Sub}`,
   opacity: 0.2,
   filter: "blur(150px)",

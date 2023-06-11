@@ -8,13 +8,11 @@ import KaKao from "../../images/KaKao.svg";
 import Naver from "../../images/Naver.svg";
 import Twitch from "../../images/Twitch.svg";
 import { ReactComponent as UserIcon } from "../../images/User.svg";
+import { COLOR } from "../../styles/theme.css";
 import * as style from "./Tab.css";
 
 const API_BASE_URL = "http://3.37.238.195:8080";
 const OAUTH2_REDIRECT_SIGNUP_URI = "http://localhost:3000/creator";
-// const AUTH_URL = "/oauth2/authoirze/{소셜 로그인 제공자}?redirect_url=";
-// const a =
-//   "http://3.37.238.195:8080/oauth2/authoirze/twitch?redirect_uri=http://localhost:3000/creator";
 type UserType = "creator" | "user";
 const SocialLoginLogo = [
   {
@@ -36,17 +34,18 @@ export const Tab = () => {
   const userType = params.get("usertype");
   console.log("user", userType);
 
-  // const NAVER_AUTH_URL = `/oauth2/authoirze/naver?redirect_uri=`;
-  // const OAUTH2_REDIRECT_SIGNUP_URI = `http://localhost:3000/oauth2/redirect/signup`;
+  const API_END_POINT = "http://3.37.238.195:8080";
+  // const temp =
+  //   "http://ec2-3-37-238-195.ap-northeast-2.compute.amazonaws.com:8080";
+  const REDIRECT_URI = "http://localhost:3000/oauth2/redirect/signup";
+  const url = `${API_END_POINT}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`;
+
   const [currentTab, clickTab] = useState<UserType>(userType as UserType);
   const UserForm = () => {
     return (
       <Form className={style.form}>
-        <a
-          className="btn btn-block social-btn naver"
-          href="http://3.37.238.195:8080/oauth2/authorize/google?redirect_uri=http://localhost:3000/oauth2/redirect/signup"
-        >
-          aaaaㅁㅁㅁa
+        <a className="btn btn-block social-btn naver" href={url}>
+          테스트 용
         </a>
         <TextField placeholder="이메일" className={style.input} />
         <TextField placeholder="비밀번호" className={style.input} />
@@ -55,13 +54,27 @@ export const Tab = () => {
         <div className={style.socialLogin}>
           {SocialLoginLogo.map((e) => (
             <a href={e.href} key={e.alt}>
-              <img
-                src={e.src}
-                alt={e.alt}
-                style={{ cursor: "pointer" }}
-                width={60}
-                height={60}
-              />
+              {e.alt === "Google 로그인" ? (
+                <img
+                  src={e.src}
+                  alt={e.alt}
+                  style={{
+                    cursor: "pointer",
+                    border: `1px solid ${COLOR.Gray_4}`,
+                    borderRadius: "50%",
+                  }}
+                  width={60}
+                  height={60}
+                />
+              ) : (
+                <img
+                  src={e.src}
+                  alt={e.alt}
+                  style={{ cursor: "pointer" }}
+                  width={60}
+                  height={60}
+                />
+              )}
             </a>
           ))}
         </div>
