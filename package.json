@@ -2,10 +2,12 @@
   "name": "@kingmojang/monorepo",
   "private": true,
   "workspaces": [
+    "api",
     "app",
     "ui",
     "utils",
-    "web"
+    "web",
+    "types"
   ],
   "scripts": {
     "build": "ultra -r build",
