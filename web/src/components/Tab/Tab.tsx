@@ -34,7 +34,8 @@ export const Tab = () => {
   const userType = params.get("usertype");
   console.log("user", userType);
 
-  const API_END_POINT = "http://3.37.238.195:8080";
+  // const API_END_POINT = "http://3.37.238.195:8080";
+  const API_END_POINT = "http://localhost:8080";
   // const temp =
   //   "http://ec2-3-37-238-195.ap-northeast-2.compute.amazonaws.com:8080";
   const REDIRECT_URI = "http://localhost:3000/oauth2/redirect/signup";

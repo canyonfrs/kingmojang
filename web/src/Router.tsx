@@ -19,6 +19,7 @@ export const PATHS = {
   kingmojang: "/kingmojang",
   signup: "/signup",
   userSignup: "/signup/usertype",
+  temp: "/oauth2/redirect/signup",
 };
 
 const withLayout = (element: React.ReactNode) => <Layout>{element}</Layout>;
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   },
   {
     path: PATHS.kingmojang,
+    element: withLayout(<KingmojangPage />),
+  },
+  {
+    path: PATHS.temp,
     element: withLayout(<KingmojangPage />),
   },
 ]);
