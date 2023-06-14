@@ -5,6 +5,6 @@ export const footer = style({
   alignItems: "center",
   justifyContent: "center",
   padding: "0 16px",
-  height: "100px",
+  height: "60px",
   backgroundColor: "#fff",
 });
