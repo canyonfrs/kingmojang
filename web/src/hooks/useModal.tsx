@@ -1,9 +1,9 @@
+import type { ModalType } from "@kingmojang/types";
 import { useCallback, useContext } from "react";
 
-import { ModalStateContext } from "../components/contexts/ModalProvider";
 import type { PortalProps } from "../components/Portal/Portal";
 import Portal from "../components/Portal/Portal";
-import type { ModalType } from "../types/modal";
+import { ModalStateContext } from "../contexts/ModalProvider";
 
 const useModal = (id: ModalType) => {
   const context = useContext(ModalStateContext);

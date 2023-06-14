@@ -2,13 +2,13 @@ import { Form, TextField } from "@kingmojang/ui";
 import { useEffect, useState } from "react";
 
 import useModal from "../../hooks/useModal";
+// TODO(@ALL): svg 관리 방법 고민
 import Google from "../../images/Google.svg";
 import KaKao from "../../images/KaKao.svg";
 import Logo from "../../images/Logo.svg";
 import Naver from "../../images/Naver.svg";
 import Twitch from "../../images/Twitch.svg";
 import Warn from "../../images/Warn.svg";
-import type { ModalType } from "../../types/modal";
 import {
   form,
   info,
@@ -19,11 +19,6 @@ import {
   socialLogin,
   warning,
 } from "./LoginModal.css";
-
-export interface ModalProps {
-  onClose: () => void;
-  id: ModalType;
-}
 
 export default function LoginModal() {
   const { Modal, close } = useModal("login");
