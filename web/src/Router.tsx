@@ -12,6 +12,7 @@ import {
   SignupPage,
   UserSignupPage,
 } from "./pages";
+import UserNickname from "./pages/UserNickname/UserNickname";
 
 export const PATHS = {
   home: "/",
@@ -19,7 +20,7 @@ export const PATHS = {
   kingmojang: "/kingmojang",
   signup: "/signup",
   userSignup: "/signup/usertype",
-  temp: "/oauth2/redirect/signup",
+  redirect: "/oauth2/redirect/signup",
 };
 
 const withLayout = (element: React.ReactNode) => <Layout>{element}</Layout>;
@@ -45,8 +46,8 @@ const router = createBrowserRouter([
     element: withLayout(<KingmojangPage />),
   },
   {
-    path: PATHS.temp,
-    element: withLayout(<KingmojangPage />),
+    path: PATHS.redirect,
+    element: withLayout(<UserNickname />),
   },
 ]);
 

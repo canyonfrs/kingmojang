@@ -11,43 +11,40 @@ import { ReactComponent as UserIcon } from "../../images/User.svg";
 import { COLOR } from "../../styles/theme.css";
 import * as style from "./Tab.css";
 
-const API_BASE_URL = "http://3.37.238.195:8080";
-const OAUTH2_REDIRECT_SIGNUP_URI = "http://localhost:3000/creator";
+const API_END_POINT = "http://localhost:8080";
+const REDIRECT_URI = "http://localhost:3000/oauth2/redirect/signup";
 type UserType = "creator" | "user";
 const SocialLoginLogo = [
   {
     src: Twitch,
-    href: `${API_BASE_URL}/oauth2/authoirze/twitch`,
+    href: `${API_END_POINT}/oauth2/authorize/twitch?redirect_uri=${REDIRECT_URI}`,
     alt: "Twitch 로그인",
   },
   {
     src: Google,
-    href: `/oauth2/authoirze/google?redirect_url=${OAUTH2_REDIRECT_SIGNUP_URI}`,
+    href: `${API_END_POINT}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`,
     alt: "Google 로그인",
   },
-  { src: Naver, href: "", alt: "Naver 로그인" },
-  { src: KaKao, href: "", alt: "KaKao 로그인" },
+  {
+    src: Naver,
+    href: `${API_END_POINT}/oauth2/authorize/naver?redirect_uri=${REDIRECT_URI}`,
+    alt: "Naver 로그인",
+  },
+  {
+    src: KaKao,
+    href: `${API_END_POINT}/oauth2/authorize/kakao?redirect_uri=${REDIRECT_URI}`,
+    alt: "KaKao 로그인",
+  },
 ];
 export const Tab = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const userType = params.get("usertype");
-  console.log("user", userType);
-
-  // const API_END_POINT = "http://3.37.238.195:8080";
-  const API_END_POINT = "http://localhost:8080";
-  // const temp =
-  //   "http://ec2-3-37-238-195.ap-northeast-2.compute.amazonaws.com:8080";
-  const REDIRECT_URI = "http://localhost:3000/oauth2/redirect/signup";
-  const url = `${API_END_POINT}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`;
 
   const [currentTab, clickTab] = useState<UserType>(userType as UserType);
   const UserForm = () => {
     return (
       <Form className={style.form}>
-        <a className="btn btn-block social-btn naver" href={url}>
-          테스트 용
-        </a>
         <TextField placeholder="이메일" className={style.input} />
         <TextField placeholder="비밀번호" className={style.input} />
         <button className={style.nextBtn}>다음 단계</button>
