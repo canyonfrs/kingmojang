@@ -14,32 +14,34 @@ import * as style from "./Tab.css";
 const API_END_POINT = "http://localhost:8080";
 const REDIRECT_URI = "http://localhost:3000/oauth2/redirect/signup";
 type UserType = "creator" | "user";
-const SocialLoginLogo = [
-  {
-    src: Twitch,
-    href: `${API_END_POINT}/oauth2/authorize/twitch?redirect_uri=${REDIRECT_URI}`,
-    alt: "Twitch 로그인",
-  },
-  {
-    src: Google,
-    href: `${API_END_POINT}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`,
-    alt: "Google 로그인",
-  },
-  {
-    src: Naver,
-    href: `${API_END_POINT}/oauth2/authorize/naver?redirect_uri=${REDIRECT_URI}`,
-    alt: "Naver 로그인",
-  },
-  {
-    src: KaKao,
-    href: `${API_END_POINT}/oauth2/authorize/kakao?redirect_uri=${REDIRECT_URI}`,
-    alt: "KaKao 로그인",
-  },
-];
+
 export const Tab = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const userType = params.get("usertype");
+
+  const SocialLoginLogo = [
+    {
+      src: Twitch,
+      href: `${API_END_POINT}/oauth2/authorize/twitch?redirect_uri=${REDIRECT_URI}`,
+      alt: "Twitch 로그인",
+    },
+    {
+      src: Google,
+      href: `${API_END_POINT}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`,
+      alt: "Google 로그인",
+    },
+    {
+      src: Naver,
+      href: `${API_END_POINT}/oauth2/authorize/naver?redirect_uri=${REDIRECT_URI}`,
+      alt: "Naver 로그인",
+    },
+    {
+      src: KaKao,
+      href: `${API_END_POINT}/oauth2/authorize/kakao?redirect_uri=${REDIRECT_URI}`,
+      alt: "KaKao 로그인",
+    },
+  ];
 
   const [currentTab, clickTab] = useState<UserType>(userType as UserType);
   const UserForm = () => {
