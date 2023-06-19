@@ -1,17 +1,18 @@
 {
   "name": "@kingmojang/app",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "tsc && vite build",
+    "dev": "vite",
     "dev:app": "tauri dev",
-    "dev:web": "vite",
     "preview": "vite preview"
   },
   "dependencies": {
     "@kingmojang/ui": "workspace:^",
     "@kingmojang/utils": "workspace:^",
     "@tauri-apps/api": "^1.2.0",
+    "@vanilla-extract/css": "^1.11.1",
+    "@vanilla-extract/vite-plugin": "^3.8.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
