@@ -32,6 +32,7 @@ const base = style({
   justifyContent: "space-around",
   alignItems: "center",
   borderRadius: "8px",
+  cursor: "pointer",
 });
 
 export const SignupButton = styleVariants({

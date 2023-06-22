@@ -1,6 +1,6 @@
 import Gradation from "../../components/Gradation/Gradation";
 import LogoHeader from "../../components/LogoHeader/LogoHeader";
-import { Tab } from "../../components/Tab/Tab";
+import { Userform } from "../../components/UserForm/Userform";
 import * as style from "./UserSignupPage.css";
 
 export function UserSignupPage() {
@@ -9,7 +9,7 @@ export function UserSignupPage() {
       <Gradation />
       <LogoHeader />
       <div className={style.contentWrapper}>
-        <Tab />
+        <Userform />
       </div>
     </div>
   );

@@ -6,13 +6,14 @@ import {
 
 import Layout from "./Layout";
 import {
+  CreatorCodePage,
   CreatorPage,
   HomePage,
   KingmojangPage,
+  NicknamePage,
   SignupPage,
   UserSignupPage,
 } from "./pages";
-import UserNickname from "./pages/UserNickname/UserNickname";
 
 export const PATHS = {
   home: "/",
@@ -20,7 +21,8 @@ export const PATHS = {
   kingmojang: "/kingmojang",
   signup: "/signup",
   userSignup: "/signup/usertype",
-  redirect: "/oauth2/redirect/signup",
+  userRedirect: "/oauth2/redirect/signup",
+  creatorRedirect: "/oauth2/redirect/signup/creator",
 };
 
 const withLayout = (element: React.ReactNode) => <Layout>{element}</Layout>;
@@ -46,8 +48,12 @@ const router = createBrowserRouter([
     element: withLayout(<KingmojangPage />),
   },
   {
-    path: PATHS.redirect,
-    element: withLayout(<UserNickname />),
+    path: PATHS.userRedirect,
+    element: withLayout(<NicknamePage />),
+  },
+  {
+    path: PATHS.creatorRedirect,
+    element: withLayout(<CreatorCodePage />),
   },
 ]);
 
