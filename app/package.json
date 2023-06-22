@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
-    "dev": "vite",
-    "preview": "vite preview",
-    "tauri": "tauri"
+    "dev:app": "tauri dev",
+    "dev:web": "vite",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@kingmojang/ui": "workspace:^",
