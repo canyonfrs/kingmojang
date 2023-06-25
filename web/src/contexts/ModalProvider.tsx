@@ -1,6 +1,5 @@
+import type { ModalType } from "@kingmojang/types";
 import React, { createContext, useState } from "react";
-
-import type { ModalType } from "../../types/modal";
 
 interface ModalProviderInterface {
   currentModal: ModalType;

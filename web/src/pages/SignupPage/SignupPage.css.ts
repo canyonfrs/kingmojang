@@ -7,9 +7,8 @@ export const container = style({
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-
+  height: "calc(100vh - 56px - 60px)",
   width: "100vw",
-  height: "calc(100vh - 80px - 100px)",
 
   backgroundColor: "white",
 });
@@ -33,6 +32,7 @@ const base = style({
   justifyContent: "space-around",
   alignItems: "center",
   borderRadius: "8px",
+  cursor: "pointer",
 });
 
 export const SignupButton = styleVariants({
