@@ -1,16 +1,15 @@
 import Gradation from "../../components/Gradation/Gradation";
-import { Tab } from "../../components/Tab/Tab";
-import Logo from "../../images/LogoWithWord.svg";
+import LogoHeader from "../../components/LogoHeader/LogoHeader";
+import { Userform } from "../../components/UserForm/Userform";
 import * as style from "./UserSignupPage.css";
 
 export function UserSignupPage() {
   return (
     <div className={style.container}>
       <Gradation />
-      <img src={Logo} />
+      <LogoHeader />
       <div className={style.contentWrapper}>
-        <h1 className={style.title}>다양한 크리에이터의 메모장을 한눈에!</h1>
-        <Tab />
+        <Userform />
       </div>
     </div>
   );

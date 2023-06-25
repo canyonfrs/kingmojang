@@ -1,5 +1,5 @@
 type UserType = "CREATOR" | "USER";
-type ProviderType = "GOOGLE" | "NAVER" | "TWITCH" | "KAKAO";
+export type ProviderType = "GOOGLE" | "NAVER" | "TWITCH" | "KAKAO";
 
 interface ILocalLogin {
   username: string;
@@ -7,7 +7,7 @@ interface ILocalLogin {
 }
 
 interface ISocialSignup {
-  username: string;
+  // username: string;
   nickname: string;
   email: string;
   provider: ProviderType;
