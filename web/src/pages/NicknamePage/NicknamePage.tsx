@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import Gradation from "../../components/Gradation/Gradation";
 import LogoHeader from "../../components/LogoHeader/LogoHeader";
-import useUserStore from "../../stores/userStore";
+// import useUserStore from "../../stores/userStore";
 import * as Style from "./NicknamePage.css";
 
 export function NicknamePage() {
@@ -16,12 +16,16 @@ export function NicknamePage() {
   const searchParams = new URLSearchParams(location.search);
   const email = searchParams.get("email");
   const provider = searchParams.get("provider");
+  const error = searchParams.get("error");
   const navigator = useNavigate();
-  const { userType } = useUserStore();
+  // const { userType } = useUserStore();
 
+  console.log("pro", provider);
+  console.log("error", error);
   useEffect(() => {
-    if (userType === "user") {
-      navigator("/oauth2/redirect/signup/creator", { replace: true });
+    if (error) {
+      alert(error);
+      navigator("/");
     }
   }, []);
   const handleInput = (ev: ChangeEvent<HTMLInputElement>) => {

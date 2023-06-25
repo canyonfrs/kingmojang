@@ -1,8 +1,4 @@
-/* 참고: https://reactrouter.com/en/main/start/tutorial (React Router Tutorial) */
-import {
-  createBrowserRouter,
-  RouterProvider as Provider,
-} from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 
 import Layout from "./Layout";
 import {
@@ -14,47 +10,62 @@ import {
   SignupPage,
   UserSignupPage,
 } from "./pages";
-
-export const PATHS = {
-  home: "/",
-  creator: "/creator",
-  kingmojang: "/kingmojang",
-  signup: "/signup",
-  userSignup: "/signup/usertype",
-  userRedirect: "/oauth2/redirect/signup",
-  creatorRedirect: "/oauth2/redirect/signup/creator",
-};
+import useUserStore from "./stores/userStore";
 
 const withLayout = (element: React.ReactNode) => <Layout>{element}</Layout>;
-const router = createBrowserRouter([
-  {
-    path: PATHS.signup,
-    element: withLayout(<SignupPage />),
-  },
-  {
-    path: PATHS.userSignup,
-    element: withLayout(<UserSignupPage />),
-  },
-  {
-    path: PATHS.home,
-    element: withLayout(<HomePage />),
-  },
-  {
-    path: PATHS.creator,
-    element: withLayout(<CreatorPage />),
-  },
-  {
-    path: PATHS.kingmojang,
-    element: withLayout(<KingmojangPage />),
-  },
-  {
-    path: PATHS.userRedirect,
-    element: withLayout(<NicknamePage />),
-  },
-  {
-    path: PATHS.creatorRedirect,
-    element: withLayout(<CreatorCodePage />),
-  },
-]);
 
-export const RouterProvider = () => <Provider router={router} />;
+export default function Router() {
+  const { userType } = useUserStore();
+
+  return useRoutes([
+    {
+      id: "main",
+      path: "/",
+      element: withLayout(<HomePage />),
+    },
+    {
+      id: "creator",
+      path: "creator",
+      element: withLayout(<CreatorPage />),
+    },
+    {
+      id: "kingmojang",
+      path: "kingmojang",
+      element: withLayout(<KingmojangPage />),
+    },
+    {
+      id: "signup",
+      path: "signup",
+      children: [
+        {
+          id: "signup_main",
+          path: "",
+          element: withLayout(<SignupPage />),
+        },
+        {
+          id: "usertype",
+          path: "usertype",
+          element: withLayout(<UserSignupPage />),
+        },
+        { id: "image", path: "a", element: <SignupPage /> },
+      ],
+    },
+    {
+      id: "oauth2",
+      path: "oauth2/redirect",
+      children: [
+        userType === "user"
+          ? {
+              id: "nickname",
+              path: "signup",
+              element: withLayout(<NicknamePage />),
+            }
+          : {
+              id: "creator_code",
+              path: "signup",
+              element: withLayout(<CreatorCodePage />),
+            },
+      ],
+    },
+  ]);
+}
