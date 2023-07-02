@@ -9,7 +9,7 @@ import { CreatorPage, HomePage, KingmojangPage, SignupPage } from "./pages";
 
 export const PATHS = {
   home: "/",
-  creator: "/creator",
+  creator: "/creater",
   kingmojang: "/kingmojang",
   signup: "/signup",
 };

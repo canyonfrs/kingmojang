@@ -21,12 +21,14 @@ export async function requestAPI<T>({
   baseURL,
   responseParser,
   errorHandler,
+  ...restProps
 }: RequestAPIType) {
   const response = await axios
     .request<T>({
       url,
       baseURL,
       params,
+      ...restProps,
     })
     .catch(errorHandler);
 
