@@ -18,6 +18,7 @@ export type RequestConfigType = Omit<
 export async function requestAPI<T>({
   url,
   params,
+  method,
   baseURL,
   responseParser,
   errorHandler,
@@ -25,6 +26,7 @@ export async function requestAPI<T>({
 }: RequestAPIType) {
   const response = await axios
     .request<T>({
+      method,
       url,
       baseURL,
       params,

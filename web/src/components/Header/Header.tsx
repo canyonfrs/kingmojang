@@ -1,4 +1,5 @@
 import { Button } from "@kingmojang/ui";
+import { Link } from "react-router-dom";
 
 import { SearchBox } from "../SearchBox";
 import * as Style from "./Header.css";
@@ -11,8 +12,12 @@ export function Header() {
         <SearchBox />
       </div>
       <div className={Style.ButtonWrapper}>
-        <Button className={Style.SigninButtonStyle}>로그인</Button>
-        <Button className={Style.SignupButtonStyle}>회원가입</Button>
+        <Button className={Style.SigninButtonStyle}>
+          <Link to="/signup/usertype?">로그인</Link>
+        </Button>
+        <Button className={Style.SignupButtonStyle}>
+          <Link to="/signup">회원가입</Link>
+        </Button>
       </div>
     </header>
   );
