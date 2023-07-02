@@ -12,6 +12,16 @@ import {
 } from "./pages";
 import useUserStore from "./stores/userStore";
 
+export const PATHS = {
+  home: "/",
+  creator: "/creator",
+  kingmojang: "/kingmojang",
+  signup: "/signup",
+  userSignup: "/signup/usertype",
+  redirect: "/oauth2/redirect",
+  userRedirect: "/oauth2/redirect/signup",
+};
+
 const withLayout = (element: React.ReactNode) => <Layout>{element}</Layout>;
 
 export default function Router() {
@@ -19,50 +29,39 @@ export default function Router() {
 
   return useRoutes([
     {
-      id: "main",
-      path: "/",
+      path: PATHS.home,
       element: withLayout(<HomePage />),
     },
     {
-      id: "creator",
-      path: "creator",
+      path: PATHS.creator,
       element: withLayout(<CreatorPage />),
     },
     {
-      id: "kingmojang",
-      path: "kingmojang",
+      path: PATHS.kingmojang,
       element: withLayout(<KingmojangPage />),
     },
     {
-      id: "signup",
-      path: "signup",
       children: [
         {
-          id: "signup_main",
-          path: "",
+          path: PATHS.signup,
           element: withLayout(<SignupPage />),
         },
         {
-          id: "usertype",
-          path: "usertype",
+          path: PATHS.userSignup,
           element: withLayout(<UserSignupPage />),
         },
-        { id: "image", path: "a", element: <SignupPage /> },
       ],
     },
     {
-      id: "oauth2",
-      path: "oauth2/redirect",
+      path: PATHS.redirect,
       children: [
         userType === "user"
           ? {
-              id: "nickname",
-              path: "signup",
+              path: PATHS.userRedirect,
               element: withLayout(<NicknamePage />),
             }
           : {
-              id: "creator_code",
-              path: "signup",
+              path: PATHS.userRedirect,
               element: withLayout(<CreatorCodePage />),
             },
       ],
