@@ -6,9 +6,10 @@ import "slick-carousel/slick/slick-theme.css";
 import { APIProvider } from "@kingmojang/api";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import ModalProvider from "./contexts/ModalProvider";
-import { RouterProvider } from "./Router";
+import Router from "./Router";
 
 // INFO(@정현수): https://ko.vitejs.dev/guide/env-and-mode.html
 const SERVER_URL =
@@ -20,7 +21,15 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <APIProvider baseURL={SERVER_URL}>
       <ModalProvider>
-        <RouterProvider />
+        <RouterProvider
+          router={createBrowserRouter([
+            {
+              id: "MainRouter",
+              path: "*",
+              element: <Router />,
+            },
+          ])}
+        />
       </ModalProvider>
     </APIProvider>
   </React.StrictMode>,
