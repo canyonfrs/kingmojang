@@ -19,13 +19,14 @@ export const PATHS = {
   signup: "/signup",
   userSignup: "/signup/usertype",
   redirect: "/oauth2/redirect",
+  creatorNickName: "/oauth2/redirect/creator/nickname",
   userRedirect: "/oauth2/redirect/signup",
 };
 
 const withLayout = (element: React.ReactNode) => <Layout>{element}</Layout>;
 
 export default function Router() {
-  const { userType } = useUserStore();
+  const { userInfo } = useUserStore();
 
   return useRoutes([
     {
@@ -55,7 +56,7 @@ export default function Router() {
     {
       path: PATHS.redirect,
       children: [
-        userType === "user"
+        userInfo.memberType === "USER"
           ? {
               path: PATHS.userRedirect,
               element: withLayout(<NicknamePage />),
@@ -64,6 +65,10 @@ export default function Router() {
               path: PATHS.userRedirect,
               element: withLayout(<CreatorCodePage />),
             },
+        {
+          path: PATHS.creatorNickName,
+          element: withLayout(<NicknamePage />),
+        },
       ],
     },
   ]);

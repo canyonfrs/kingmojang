@@ -1,28 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { ReactComponent as CreatorIcon } from "../../images/Creator.svg";
 import { ReactComponent as UserIcon } from "../../images/User.svg";
+import type { UserType } from "../../stores/userStore";
 import useUserStore from "../../stores/userStore";
 import * as Style from "./Tab.css";
 
-type UserType = "creator" | "user";
-
 export const Tab = () => {
-  const { userType, setUserType } = useUserStore();
-  const [currentTab, setCurrentTab] = useState<UserType>(userType as UserType);
-
-  useEffect(() => {
-    console.log("userType", userType);
-  }, [userType]);
+  const { userInfo, setUserInfo } = useUserStore();
+  const [currentTab, setCurrentTab] = useState<UserType>(
+    userInfo.memberType as UserType,
+  );
 
   const menuArr = [
-    { type: "user", name: "일반유저" },
-    { type: "creator", name: "크리에이터" },
+    { type: "USER", name: "일반유저" },
+    { type: "CREATOR", name: "크리에이터" },
   ];
 
   const selectMenuHandler = (type: UserType) => {
+    const newData = { ...userInfo };
     setCurrentTab(type);
-    setUserType(type);
+    newData.memberType = type;
+    setUserInfo(newData);
   };
 
   return (
@@ -37,7 +36,7 @@ export const Tab = () => {
           }
           onClick={() => selectMenuHandler(el.type as UserType)}
         >
-          {el.type === "user" ? (
+          {el.type === "USER" ? (
             <UserIcon width={32} height={32} />
           ) : (
             <CreatorIcon width={32} height={32} />

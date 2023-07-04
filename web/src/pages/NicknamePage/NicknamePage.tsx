@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import Gradation from "../../components/Gradation/Gradation";
 import LogoHeader from "../../components/LogoHeader/LogoHeader";
-// import useUserStore from "../../stores/userStore";
+import useUserStore from "../../stores/userStore";
 import * as Style from "./NicknamePage.css";
 
 export function NicknamePage() {
@@ -18,10 +18,8 @@ export function NicknamePage() {
   const provider = searchParams.get("provider");
   const error = searchParams.get("error");
   const navigator = useNavigate();
-  // const { userType } = useUserStore();
+  const { userInfo } = useUserStore();
 
-  console.log("pro", provider);
-  console.log("error", error);
   useEffect(() => {
     if (error) {
       alert(error);
@@ -31,12 +29,14 @@ export function NicknamePage() {
   const handleInput = (ev: ChangeEvent<HTMLInputElement>) => {
     setNickname(ev.currentTarget.value);
   };
+  console.log("userType", userInfo.memberType);
 
   const { mutate, isSuccess } = useSocialSignup({
-    email: email || "",
-    memberType: "USER",
+    email: email || "", //여기도
+    memberType: userInfo.memberType,
     nickname: nickname,
-    provider: provider?.toUpperCase() as ProviderType,
+    provider: provider?.toUpperCase() as ProviderType, // 여기도 추후에 고쳐
+    // code: 여기로 code 가져와야됌
   });
 
   const submit = () => {

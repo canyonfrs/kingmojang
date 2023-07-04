@@ -1,11 +1,9 @@
 import { Form, TextField } from "@kingmojang/ui";
-import { useEffect } from "react";
 
 import Google from "../../images/Google.svg";
 import KaKao from "../../images/KaKao.svg";
 import Naver from "../../images/Naver.svg";
 import Twitch from "../../images/Twitch.svg";
-import useUserStore from "../../stores/userStore";
 import { COLOR } from "../../styles/theme.css";
 import { Tab } from "../Tab/Tab";
 import * as Style from "./Userform.css";

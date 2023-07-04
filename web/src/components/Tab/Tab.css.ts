@@ -30,14 +30,14 @@ export const base = style({
 });
 
 export const selectedUserTab = styleVariants({
-  user: [
+  USER: [
     base,
     {
       color: `${COLOR.Sub}`,
       borderBottom: `2px solid ${COLOR.Sub}`,
     },
   ],
-  creator: [
+  CREATOR: [
     base,
     {
       color: `${COLOR.Primary}`,

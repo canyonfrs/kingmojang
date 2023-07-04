@@ -36,6 +36,7 @@ export default function PinInput({
         onChange={handleInput}
         maxLength={8}
         style={{ opacity: 0, position: "absolute", bottom: 0 }}
+        autoComplete="off"
       />
       {new Array(count).fill(0).map((_, i) => (
         <label htmlFor="code" className={Style.number} key={i}>
