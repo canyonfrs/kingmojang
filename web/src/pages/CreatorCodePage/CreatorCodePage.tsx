@@ -14,54 +14,29 @@ export function CreatorCodePage() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [result, setResult] = useState("");
   const navigator = useNavigate();
-  // useCreatorCode
-  // const { data, refetch } = useCreatorCode(result);
-  // useEffect(() => {
-  //   refetch();
-  //   console.log("");
-  // }, [result]);
+  const { refetch } = useCreatorCode(result);
   const { userInfo, setUserInfo } = useUserStore();
 
-  // const { data, refetch } = useCreatorCode(result);
-  // const temp = sendCode();
-  // console.log("data", data);
+  // 83481747
 
-  // const send = async (result: string) => {
-  //   await useCreatorCode(result);
-  // };
   const submit = async () => {
-    // ev.preventDefault();
-    const temp = await useCreatorCode(result).then((res) =>
-      console.log("res", res),
-    );
-    console.log("temp", temp);
-    // .then((res) => {
-    //   console.log("res", res);
-    //   if (res.status === 202) {
-    //     const newUserInfo = { ...userInfo };
+    const response = await refetch(); //이게 맞아? refetch했을때 결과 값을 어디서 가져오는거야 data로 가져오면 한박자씩 늦음
 
-    //     newUserInfo.code = result;
-    //     setUserInfo(newUserInfo);
+    if (response.status === "success") {
+      const newUserInfo = { ...userInfo };
 
-    //     newUserInfo.code = result;
-    //     setUserInfo(newUserInfo);
-    //     navigator(`/oauth2/redirect/creator/nickname`, {
-    //       replace: true,
-    //     });
-    //   } else if (res.status === 404) {
-    //     alert("코드가 일치하지 않습니다.");
-    //   }
-    // });
-    const newUserInfo = { ...userInfo };
+      newUserInfo.code = result;
+      setUserInfo(newUserInfo);
 
-    newUserInfo.code = result;
-    setUserInfo(newUserInfo);
-
-    newUserInfo.code = result;
-    setUserInfo(newUserInfo);
-    navigator(`/oauth2/redirect/creator/nickname`, {
-      replace: true,
-    });
+      newUserInfo.code = result;
+      setUserInfo(newUserInfo);
+      console.log("hereaaa");
+      navigator(`/oauth2/redirect/creator/nickname`, {
+        replace: true,
+      });
+    } else {
+      alert("코드가 일치하지 않습니다.");
+    }
   };
 
   return (
