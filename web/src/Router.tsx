@@ -2,8 +2,8 @@ import { useRoutes } from "react-router-dom";
 
 import Layout from "./Layout";
 import {
+  CreaterPage,
   CreatorCodePage,
-  CreatorPage,
   HomePage,
   KingmojangPage,
   NicknamePage,
@@ -14,7 +14,7 @@ import useUserStore from "./stores/userStore";
 
 export const PATHS = {
   home: "/",
-  creator: "/creator",
+  creator: "/creater",
   kingmojang: "/kingmojang",
   signup: "/signup",
   userSignup: "/signup/usertype",
@@ -34,7 +34,7 @@ export default function Router() {
     },
     {
       path: PATHS.creator,
-      element: withLayout(<CreatorPage />),
+      element: withLayout(<CreaterPage />),
     },
     {
       path: PATHS.kingmojang,

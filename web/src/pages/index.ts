@@ -1,5 +1,5 @@
+export { CreaterPage } from "./CreaterPage/CreaterPage";
 export { CreatorCodePage } from "./CreatorCodePage/CreatorCodePage";
-export { CreatorPage } from "./CreatorPage/CreatorPage";
 export { HomePage } from "./HomePage/HomePage";
 export { KingmojangPage } from "./KingmojangPage/KingmojangPage";
 export { NicknamePage } from "./NicknamePage/NicknamePage";
