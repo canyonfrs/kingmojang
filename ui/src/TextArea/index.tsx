@@ -1,11 +1,11 @@
 import classNames from "classnames";
-import type { HTMLAttributes, Ref } from "react";
+import type { Ref, TextareaHTMLAttributes } from "react";
 import { forwardRef, useId } from "react";
 
 import * as Style from "./style.css";
 
 export interface TextAreaProps
-  extends Omit<HTMLAttributes<HTMLTextAreaElement>, "id"> {
+  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "id"> {
   label?: string;
 }
 

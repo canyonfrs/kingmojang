@@ -1,7 +1,7 @@
-import type { FormEvent, HTMLAttributes, Ref } from "react";
+import type { FormEvent, FormHTMLAttributes, Ref } from "react";
 import { forwardRef, useCallback } from "react";
 
-export interface FormProps extends HTMLAttributes<HTMLFormElement> {}
+export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {}
 
 export const Form = forwardRef(function Form(
   { children, onSubmit = () => {}, ...props }: FormProps,
