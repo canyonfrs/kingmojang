@@ -24,6 +24,7 @@ export function CreatorCodePage() {
     if (response.status === "success") {
       const newUserInfo = { ...userInfo, code };
       setUserInfo(newUserInfo);
+      alert("인증 되었습니다.");
       navigator(`/oauth2/redirect/creator/nickname`, {
         replace: true,
       });
