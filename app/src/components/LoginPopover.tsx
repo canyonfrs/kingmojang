@@ -1,7 +1,7 @@
 import { Button, Form, Popover, TextField } from "@kingmojang/ui";
 
 import { GoogleIcon } from "../icons/GoogleIcon";
-import { KakaoIcon } from "../icons/KaKaoIcon";
+import { KakaoIcon } from "../icons/KakaoIcon";
 import { LogoIcon } from "../icons/LogoIcon";
 import { NaverIcon } from "../icons/NaverIcon";
 import { TwitchIcon } from "../icons/TwitchIcon";
