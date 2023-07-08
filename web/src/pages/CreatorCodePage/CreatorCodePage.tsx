@@ -12,25 +12,18 @@ import * as Style from "./CreatorCodePage.css";
 
 export function CreatorCodePage() {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [result, setResult] = useState("");
+  const [code, setCode] = useState("");
   const navigator = useNavigate();
-  const { refetch } = useCreatorCode(result);
+  const { refetch } = useCreatorCode(code);
   const { userInfo, setUserInfo } = useUserStore();
 
-  // 83481747
-
-  const submit = async () => {
-    const response = await refetch(); //이게 맞아? refetch했을때 결과 값을 어디서 가져오는거야 data로 가져오면 한박자씩 늦음
+  const checkCreatorCode = async () => {
+    // INFO(@정현수): refetch 했을 때 가져오는 값은 useQuery 날렸을 때와 똑같음
+    const response = await refetch();
 
     if (response.status === "success") {
-      const newUserInfo = { ...userInfo };
-
-      newUserInfo.code = result;
+      const newUserInfo = { ...userInfo, code };
       setUserInfo(newUserInfo);
-
-      newUserInfo.code = result;
-      setUserInfo(newUserInfo);
-      console.log("hereaaa");
       navigator(`/oauth2/redirect/creator/nickname`, {
         replace: true,
       });
@@ -45,8 +38,12 @@ export function CreatorCodePage() {
       <Gradation />
       <div className={Style.wrapper}>
         <h1 className={Style.h1}>회원가입 코드를 입력해주세요!</h1>
-        <PinInput count={8} nextRef={buttonRef} setResult={setResult} />
-        <button className={Style.finishButton} onClick={submit} ref={buttonRef}>
+        <PinInput count={8} nextRef={buttonRef} setResult={setCode} />
+        <button
+          className={Style.finishButton}
+          onClick={checkCreatorCode}
+          ref={buttonRef}
+        >
           다음 단계
         </button>
       </div>

@@ -7,10 +7,11 @@ export function useCreatorCode(code: string) {
   const baseURL = useBaseURL();
   return useQuery(
     [code],
-    async () => await get(`auth-codes?code=${code}`, baseURL),
+    async () => await get(`auth-codes?code=${code}`, baseURL, {}),
     {
       refetchOnWindowFocus: false,
       enabled: false,
+      retry: false,
     },
   );
 }

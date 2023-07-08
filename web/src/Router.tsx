@@ -18,9 +18,9 @@ export const PATHS = {
   kingmojang: "/kingmojang",
   signup: "/signup",
   userSignup: "/signup/usertype",
-  redirect: "/oauth2/redirect",
-  creatorNickName: "/oauth2/redirect/creator/nickname",
-  userRedirect: "/oauth2/redirect/signup",
+  redirect: "/oauth2/redirect", // TODO(@정현수): withAuth로 감싸기
+  creatorNickName: "/oauth2/redirect/creator/nickname", // TODO(@정현수): withAuth로 감싸기
+  userRedirect: "/oauth2/redirect/signup", // TODO(@정현수): withAuth로 감싸기
 };
 
 const withLayout = (element: React.ReactNode) => <Layout>{element}</Layout>;
