@@ -3,23 +3,35 @@ import { create } from "zustand";
 import type { PersistOptions } from "zustand/middleware";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-export type UserType = "user" | "creator";
+export type UserType = "USER" | "CREATOR";
 
-type UserState = {
-  userType: UserType;
-  setUserType: (data: UserType) => void;
+type SignUpInfo = {
+  memberType: UserType;
+  code: string;
+  provider: string;
+  nickname: string;
 };
 
-type UserPersis = (
+type UserState = {
+  userInfo: SignUpInfo;
+  setUserInfo: (data: SignUpInfo) => void;
+};
+
+type UserPersist = (
   config: StateCreator<UserState>,
   options: PersistOptions<UserState>,
 ) => StateCreator<UserState>;
 
 const useUserStore = create<UserState>(
-  (persist as UserPersis)(
+  (persist as UserPersist)(
     (set) => ({
-      userType: "user",
-      setUserType: (type: "creator" | "user") => set({ userType: type }),
+      userInfo: {
+        memberType: "USER",
+        nickname: "",
+        provider: "",
+        code: "",
+      },
+      setUserInfo: (data: SignUpInfo) => set({ userInfo: data }),
     }),
     {
       name: "user-storage",

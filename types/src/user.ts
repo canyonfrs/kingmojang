@@ -12,6 +12,7 @@ interface ISocialSignup {
   email: string;
   provider: ProviderType;
   memberType: UserType;
+  code?: string;
 }
 
 interface ILocalSignup extends ISocialSignup {

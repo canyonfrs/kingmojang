@@ -22,7 +22,7 @@ export const wrapper = style({
   width: "478px",
   height: "316px",
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "space-evenly",
   flexDirection: "column",
   alignItems: "center",
   border: `1px solid ${COLOR.Gray_4}`,
@@ -58,7 +58,6 @@ export const finishButton = style({
   width: "360px",
   height: "50px",
   borderRadius: "5px",
-  marginTop: "60px",
   border: "none",
   cursor: "pointer",
   backgroundColor: "#6358EE4D",
@@ -68,4 +67,25 @@ export const finishButton = style({
   ":hover": {
     backgroundColor: `${COLOR.Primary}`,
   },
+  ":focus": {
+    backgroundColor: `${COLOR.Primary}`,
+  },
+});
+
+export const number = style({
+  width: "40px",
+  height: "50px",
+  backgroundColor: "#e9e9e9",
+  border: "none",
+  borderRadius: "5px",
+  color: `${COLOR.Primary}`,
+  textAlign: "center",
+  fontSize: "22px",
+  fontWeight: 700,
+  lineHeight: "19.14px",
+});
+
+export const h1 = style({
+  fontSize: "20px",
+  fontWeight: 700,
 });

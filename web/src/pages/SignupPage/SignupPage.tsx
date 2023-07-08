@@ -8,10 +8,12 @@ import * as style from "./SignupPage.css";
 
 export function SignupPage() {
   const navigate = useNavigate();
-  const { setUserType } = useUserStore();
+  const { userInfo, setUserInfo } = useUserStore();
 
   const handleClick = (userType: UserType) => {
-    setUserType(userType);
+    const data = { ...userInfo };
+    data.memberType = userType;
+    setUserInfo(data);
     navigate("usertype");
   };
 
@@ -20,14 +22,14 @@ export function SignupPage() {
       <div className={style.buttonWrapper}>
         <button
           className={style.SignupButton["user"]}
-          onClick={() => handleClick("user")}
+          onClick={() => handleClick("USER")}
         >
           일반 유저로 가입
           <UserIcon className={style.creatorButtonImage} fill="red" />
         </button>
         <button
           className={style.SignupButton["creator"]}
-          onClick={() => handleClick("creator")}
+          onClick={() => handleClick("CREATOR")}
         >
           크리에이터로 가입
           <CreatorIcon className={style.creatorButtonImage} fill="red" />
