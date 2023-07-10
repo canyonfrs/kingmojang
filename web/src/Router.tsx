@@ -16,6 +16,7 @@ export const PATHS = {
   home: "/",
   creator: "/creater",
   kingmojang: "/kingmojang",
+  socialSignin: "/oauth2/redirect/signin",
   signup: "/signup",
   userSignup: "/signup/usertype",
   redirect: "/oauth2/redirect", // TODO(@정현수): withAuth로 감싸기
@@ -68,6 +69,10 @@ export default function Router() {
         {
           path: PATHS.creatorNickName,
           element: withLayout(<NicknamePage />),
+        },
+        {
+          path: PATHS.socialSignin,
+          element: withLayout(<HomePage />),
         },
       ],
     },

@@ -20,13 +20,34 @@ import {
   warning,
 } from "./LoginModal.css";
 
+const REDIRECT_URI = "http://localhost:3000//oauth2/redirect/signin";
+
+const API_END_POINT = "http://localhost:8080";
+
 export default function LoginModal() {
   const { Modal, close } = useModal("login");
+
   const SocialLoginLogo = [
-    { src: Twitch, href: "", alt: "Twitch 로그인" },
-    { src: Google, href: "", alt: "Google 로그인" },
-    { src: Naver, href: "", alt: "Naver 로그인" },
-    { src: KaKao, href: "", alt: "KaKao 로그인" },
+    {
+      src: Twitch,
+      href: `${API_END_POINT}/oauth2/authorize/twitch/${REDIRECT_URI}`,
+      alt: "Twitch 로그인",
+    },
+    {
+      src: Google,
+      href: `${API_END_POINT}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`,
+      alt: "Google 로그인",
+    },
+    {
+      src: Naver,
+      href: `${API_END_POINT}/oauth2/authorize/naver/${REDIRECT_URI}`,
+      alt: "Naver 로그인",
+    },
+    {
+      src: KaKao,
+      href: `${API_END_POINT}/oauth2/authorize/kakao/${REDIRECT_URI}`,
+      alt: "KaKao 로그인",
+    },
   ];
 
   const isError = true;

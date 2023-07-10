@@ -1,8 +1,8 @@
 import { useSocialSignup } from "@kingmojang/api";
-import type { ProviderType } from "@kingmojang/types";
+import type { ISocialSignup, ProviderType } from "@kingmojang/types";
 import { TextField } from "@kingmojang/ui";
 import type { ChangeEvent } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Gradation from "../../components/Gradation/Gradation";
@@ -19,31 +19,53 @@ export function NicknamePage() {
   const error = searchParams.get("error");
   const navigator = useNavigate();
   const { userInfo } = useUserStore();
+  const inputRef = useRef<HTMLInputElement>(null);
 
+  const [form, setForm] = useState<ISocialSignup>({
+    email: email || userInfo.email,
+    memberType: userInfo.memberType,
+    nickname: nickname,
+    provider:
+      (provider?.toUpperCase() as ProviderType) ||
+      userInfo.provider.toUpperCase(),
+  });
   useEffect(() => {
     if (error) {
       alert(error);
       navigator("/");
     }
+    if (userInfo.memberType === "CREATOR") {
+      setForm({
+        ...form,
+        code: userInfo.code,
+      });
+    }
   }, []);
+
   const handleInput = (ev: ChangeEvent<HTMLInputElement>) => {
     setNickname(ev.currentTarget.value);
   };
-  console.log("userType", userInfo.memberType);
 
-  const { mutate, isSuccess } = useSocialSignup({
-    email: email || "", //여기도
+  // useSocialSignup(form)
+  // const temp = useSocialSignup(form);
+  const { mutate } = useSocialSignup({
+    email: email || userInfo.email, //여기도
     memberType: userInfo.memberType,
     nickname: nickname,
-    provider: provider?.toUpperCase() as ProviderType, // 여기도 추후에 고쳐
-    // code: 여기로 code 가져와야됌
+    provider:
+      (provider?.toUpperCase() as ProviderType) ||
+      userInfo.provider.toUpperCase(),
+    code: userInfo.code || undefined,
   });
-
+  // const temp = useSocialSignup({});
   const submit = () => {
     mutate();
-    if (isSuccess) {
-      navigator("/", { replace: true });
-    }
+    // console.log("isSu", isSuccess);
+    // console.log("temp", temp.context);
+    // if (isSuccess) {
+    // console.log("here");
+    // navigator("/", { replace: true });
+    // }
   };
 
   return (
@@ -54,6 +76,7 @@ export function NicknamePage() {
         <h1 className={Style.title}>사용할 닉네임을 입력해주세요!</h1>
         <h6 className={Style.info}>한글 2~10자까지 가능해요.</h6>
         <TextField
+          ref={inputRef}
           onChange={handleInput}
           placeholder="닉네임"
           className={Style.input}

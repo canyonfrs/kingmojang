@@ -2,7 +2,7 @@
 import { useCreatorCode } from "@kingmojang/api";
 // import type { MouseEvent } from "react";
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import Gradation from "../../components/Gradation/Gradation";
 import LogoHeader from "../../components/LogoHeader/LogoHeader";
@@ -16,13 +16,20 @@ export function CreatorCodePage() {
   const navigator = useNavigate();
   const { refetch } = useCreatorCode(code);
   const { userInfo, setUserInfo } = useUserStore();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const email = searchParams.get("email");
+  const provider = searchParams.get("provider");
+  // const error = searchParams.get("error"); // error 처리도 필요할 듯(이미 가입되어있는 경우)
 
   const checkCreatorCode = async () => {
-    // INFO(@정현수): refetch 했을 때 가져오는 값은 useQuery 날렸을 때와 똑같음
     const response = await refetch();
 
     if (response.status === "success") {
-      const newUserInfo = { ...userInfo, code };
+      if (!email || !provider) {
+        return;
+      }
+      const newUserInfo = { ...userInfo, code, email, provider };
       setUserInfo(newUserInfo);
       alert("인증 되었습니다.");
       navigator(`/oauth2/redirect/creator/nickname`, {
