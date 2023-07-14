@@ -11,8 +11,6 @@ export const HeaderStyle = style({
   boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.1)",
 });
 
-export const LogoStyle = style({});
-
 export const SearchBoxWraper = style({
   position: "absolute",
   top: "50%",

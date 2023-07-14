@@ -1,19 +1,23 @@
 import { Button } from "@kingmojang/ui";
 import { Link } from "react-router-dom";
 
+import useModal from "../../hooks/useModal";
+import LoginModal from "../LoginModal/LoginModal";
 import { SearchBox } from "../SearchBox";
 import * as Style from "./Header.css";
 
 export function Header() {
+  const { open: openLogin } = useModal("login");
   return (
     <header className={Style.HeaderStyle}>
-      <div className={Style.LogoStyle}>킹모장</div>
+      <Link to="/">킹모장</Link>
       <div className={Style.SearchBoxWraper}>
         <SearchBox />
       </div>
       <div className={Style.ButtonWrapper}>
         <Button className={Style.SigninButtonStyle}>
-          <Link to="/signup/usertype?">로그인</Link>
+          <div onClick={() => openLogin()}>로그인</div>
+          <LoginModal />
         </Button>
         <Button className={Style.SignupButtonStyle}>
           <Link to="/signup">회원가입</Link>

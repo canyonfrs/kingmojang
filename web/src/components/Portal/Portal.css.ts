@@ -10,6 +10,7 @@ export const base = style({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  zIndex: 100,
 });
 
 export const background = styleVariants({

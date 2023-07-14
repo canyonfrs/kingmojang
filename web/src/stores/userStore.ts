@@ -5,9 +5,10 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 export type UserType = "USER" | "CREATOR";
 
-type SignUpInfo = {
+export type SignUpInfo = {
+  email: string;
   memberType: UserType;
-  code: string;
+  code?: string;
   provider: string;
   nickname: string;
 };
@@ -26,6 +27,7 @@ const useUserStore = create<UserState>(
   (persist as UserPersist)(
     (set) => ({
       userInfo: {
+        email: "",
         memberType: "USER",
         nickname: "",
         provider: "",
