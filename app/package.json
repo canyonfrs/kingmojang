@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kingmojang/api": "workspace:^",
     "@kingmojang/ui": "workspace:^",
     "@kingmojang/utils": "workspace:^",
     "@tauri-apps/api": "^1.2.0",
