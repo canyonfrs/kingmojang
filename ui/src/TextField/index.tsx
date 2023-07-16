@@ -1,11 +1,11 @@
 import classNames from "classnames";
-import type { HTMLAttributes, Ref } from "react";
+import type { InputHTMLAttributes, Ref } from "react";
 import { forwardRef, useId } from "react";
 
 import * as Style from "./style.css";
 
 export interface InputProps
-  extends Omit<HTMLAttributes<HTMLInputElement>, "id"> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "id"> {
   label?: string;
 }
 

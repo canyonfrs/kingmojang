@@ -14,7 +14,10 @@ function App() {
           height: "calc(100vh - 76px)",
           padding: "10px",
           fontSize: "16px",
+
           border: "none",
+          outline: "none",
+          resize: "none",
         }}
       />
       <Footer />
