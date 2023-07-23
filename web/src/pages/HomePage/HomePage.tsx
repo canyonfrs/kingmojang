@@ -1,3 +1,4 @@
+import { useAuthDispatch } from "@kingmojang/auth";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -26,23 +27,18 @@ const SUMMARY_CARD = {
 } as const;
 
 export function HomePage() {
+  const authDispatch = useAuthDispatch();
   const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const accessToken = searchParams.get("accessToken");
-  const refreshToken = searchParams.get("refreshToken");
   const history = useNavigate();
 
   useEffect(() => {
-    if (accessToken || refreshToken) {
-      sessionStorage.setItem(
-        "token",
-        JSON.stringify({
-          at: accessToken,
-          rt: refreshToken,
-        }),
-      );
-      history("/", { replace: true });
-    }
+    if (location.search === "") return;
+    authDispatch({ type: "소셜 로그인 시 URL 파싱 후 세션 저장 및 로그인" });
+    history("/");
+  }, []);
+
+  useEffect(() => {
+    authDispatch({ type: "페이지 진입 시 세션에서 현재 유저 확인하기" });
   }, []);
 
   return (

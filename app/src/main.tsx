@@ -1,6 +1,7 @@
 import "./styles/global.css";
 
 import { APIProvider } from "@kingmojang/api";
+import { AuthProvider } from "@kingmojang/auth";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -14,8 +15,10 @@ const SERVER_URL =
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <APIProvider baseURL={SERVER_URL}>
-      <App />
-    </APIProvider>
+    <AuthProvider>
+      <APIProvider baseURL={SERVER_URL}>
+        <App />
+      </APIProvider>
+    </AuthProvider>
   </React.StrictMode>,
 );

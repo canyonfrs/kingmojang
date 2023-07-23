@@ -251,16 +251,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.20.7":
-  version: 7.21.0
-  resolution: "@babel/runtime@npm:7.21.0"
-  dependencies:
-    regenerator-runtime: ^0.13.11
-  checksum: 7b33e25bfa9e0e1b9e8828bb61b2d32bdd46b41b07ba7cb43319ad08efc6fda8eb89445193e67d6541814627df0ca59122c0ea795e412b99c5183a0540d338ab
-  languageName: node
-  linkType: hard
-
-"@babel/runtime@npm:^7.13.10":
+"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.20.7":
   version: 7.22.5
   resolution: "@babel/runtime@npm:7.22.5"
   dependencies:
@@ -808,11 +799,11 @@ __metadata:
   dependencies:
     "@kingmojang/types": "workspace:^"
     "@tanstack/react-query": ^4.29.12
-    "@types/react": ^18.2.11
+    "@types/react": ^18.2.15
     axios: ^1.4.0
     nanobundle: ^1.6.0
     react: ^18.2.0
-    typescript: ^5.1.3
+    typescript: ^5.1.6
   languageName: unknown
   linkType: soft
 
@@ -821,20 +812,34 @@ __metadata:
   resolution: "@kingmojang/app@workspace:app"
   dependencies:
     "@kingmojang/api": "workspace:^"
+    "@kingmojang/auth": "workspace:^"
     "@kingmojang/ui": "workspace:^"
     "@kingmojang/utils": "workspace:^"
     "@tauri-apps/api": ^1.2.0
     "@tauri-apps/cli": ^1.2.3
     "@types/node": ^18.14.6
-    "@types/react": ^18.0.28
-    "@types/react-dom": ^18.0.11
+    "@types/react": ^18.2.15
+    "@types/react-dom": ^18.2.7
     "@vanilla-extract/css": ^1.11.1
     "@vanilla-extract/vite-plugin": ^3.8.2
     "@vitejs/plugin-react": ^3.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
-    typescript: ^4.9.5
+    typescript: ^5.1.6
     vite: ^4.1.4
+  languageName: unknown
+  linkType: soft
+
+"@kingmojang/auth@workspace:^, @kingmojang/auth@workspace:auth":
+  version: 0.0.0-use.local
+  resolution: "@kingmojang/auth@workspace:auth"
+  dependencies:
+    "@kingmojang/types": "workspace:^"
+    "@types/react": ^18.2.15
+    jwt-decode: ^3.1.2
+    nanobundle: ^1.6.0
+    react: ^18.2.0
+    typescript: ^5.1.6
   languageName: unknown
   linkType: soft
 
@@ -855,7 +860,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-simple-import-sort: ^10.0.0
     prettier: ^2.8.4
-    typescript: ^4.9.5
+    typescript: ^5.1.6
     ultra-runner: ^3.10.5
     vite-plugin-svgr: ^3.2.0
   languageName: unknown
@@ -865,7 +870,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@kingmojang/types@workspace:types"
   dependencies:
-    typescript: ^5.1.3
+    typescript: ^5.1.6
   languageName: unknown
   linkType: soft
 
@@ -876,15 +881,15 @@ __metadata:
     "@radix-ui/react-popover": ^1.0.6
     "@react-aria/interactions": ^3.15.0
     "@react-aria/utils": ^3.16.0
-    "@types/react": ^18.0.28
-    "@types/react-dom": ^18.0.11
+    "@types/react": ^18.2.15
+    "@types/react-dom": ^18.2.7
     "@vanilla-extract/css": ^1.9.5
     "@vanilla-extract/esbuild-plugin": ^2.2.1
     classnames: ^2.3.2
     esbuild: ^0.17.11
     react: ^18.2.0
     react-dom: ^18.2.0
-    typescript: ^4.9.5
+    typescript: ^5.1.6
   peerDependencies:
     react: ^18
     react-dom: ^18
@@ -897,7 +902,7 @@ __metadata:
   dependencies:
     nanobundle: ^1.5.0
     react-error-boundary: ^4.0.4
-    typescript: ^4.9.5
+    typescript: ^5.1.6
   languageName: unknown
   linkType: soft
 
@@ -906,11 +911,12 @@ __metadata:
   resolution: "@kingmojang/web@workspace:web"
   dependencies:
     "@kingmojang/api": "workspace:^"
+    "@kingmojang/auth": "workspace:^"
     "@kingmojang/types": "workspace:^"
     "@kingmojang/ui": "workspace:^"
     "@kingmojang/utils": "workspace:^"
-    "@types/react": ^18.0.28
-    "@types/react-dom": ^18.0.11
+    "@types/react": ^18.2.15
+    "@types/react-dom": ^18.2.7
     "@types/react-slick": ^0.23.10
     "@vanilla-extract/css": ^1.9.5
     "@vanilla-extract/recipes": ^0.4.0
@@ -923,7 +929,7 @@ __metadata:
     react-router-dom: ^6.9.0
     react-slick: ^0.29.0
     slick-carousel: ^1.8.1
-    typescript: ^4.9.5
+    typescript: ^5.1.6
     vite: ^4.1.4
     vite-plugin-svgr: ^3.2.0
     zustand: ^4.3.7
@@ -1779,12 +1785,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.11":
-  version: 18.0.11
-  resolution: "@types/react-dom@npm:18.0.11"
+"@types/react-dom@npm:^18.2.7":
+  version: 18.2.7
+  resolution: "@types/react-dom@npm:18.2.7"
   dependencies:
     "@types/react": "*"
-  checksum: 579691e4d5ec09688087568037c35edf8cfb1ab3e07f6c60029280733ee7b5c06d66df6fcc90786702c93ac8cb13bc7ff16c79ddfc75d082938fbaa36e1cdbf4
+  checksum: e02ea908289a7ad26053308248d2b87f6aeafd73d0e2de2a3d435947bcea0422599016ffd1c3e38ff36c42f5e1c87c7417f05b0a157e48649e4a02f21727d54f
   languageName: node
   linkType: hard
 
@@ -1797,14 +1803,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.0.28, @types/react@npm:^18.2.11":
-  version: 18.2.11
-  resolution: "@types/react@npm:18.2.11"
+"@types/react@npm:*, @types/react@npm:^18.2.15":
+  version: 18.2.15
+  resolution: "@types/react@npm:18.2.15"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 3dcc326ea87468a06079b6c3a9e0f9a98a8438526aba81d29820954e2cb343b6beb8ca3d6a212878797a909fbd3199d07a4d819cd3efbbdba8c22039c06f1ed8
+  checksum: 36989f638201bfe2f4110b06c119180f6df9c0e13d7060481e82e7a745f81745a01ae543c478a25b61e0767cb52e82da2ad5b0dedacabf99339e523d06176705
   languageName: node
   linkType: hard
 
@@ -4869,6 +4875,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jwt-decode@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "jwt-decode@npm:3.1.2"
+  checksum: 20a4b072d44ce3479f42d0d2c8d3dabeb353081ba4982e40b83a779f2459a70be26441be6c160bfc8c3c6eadf9f6380a036fbb06ac5406b5674e35d8c4205eeb
+  languageName: node
+  linkType: hard
+
 "kind-of@npm:^6.0.3":
   version: 6.0.3
   resolution: "kind-of@npm:6.0.3"
@@ -6668,17 +6681,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.1.0":
+"tslib@npm:^2.0.0, tslib@npm:^2.1.0, tslib@npm:^2.4.0":
   version: 2.6.0
   resolution: "tslib@npm:2.6.0"
   checksum: c01066038f950016a18106ddeca4649b4d76caa76ec5a31e2a26e10586a59fceb4ee45e96719bf6c715648e7c14085a81fee5c62f7e9ebee68e77a5396e5538f
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2.4.0":
-  version: 2.5.0
-  resolution: "tslib@npm:2.5.0"
-  checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
   languageName: node
   linkType: hard
 
@@ -6741,23 +6747,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.9.5":
-  version: 4.9.5
-  resolution: "typescript@npm:4.9.5"
+"typescript@npm:^5.1.6":
+  version: 5.1.6
+  resolution: "typescript@npm:5.1.6"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: ee000bc26848147ad423b581bd250075662a354d84f0e06eb76d3b892328d8d4440b7487b5a83e851b12b255f55d71835b008a66cbf8f255a11e4400159237db
-  languageName: node
-  linkType: hard
-
-"typescript@npm:^5.1.3":
-  version: 5.1.3
-  resolution: "typescript@npm:5.1.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: d9d51862d98efa46534f2800a1071a613751b1585dc78884807d0c179bcd93d6e9d4012a508e276742f5f33c480adefc52ffcafaf9e0e00ab641a14cde9a31c7
+  checksum: b2f2c35096035fe1f5facd1e38922ccb8558996331405eb00a5111cc948b2e733163cc22fab5db46992aba7dd520fff637f2c1df4996ff0e134e77d3249a7350
   languageName: node
   linkType: hard
 
@@ -6771,23 +6767,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.9.5#~builtin<compat/typescript>":
-  version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"
+"typescript@patch:typescript@^5.1.6#~builtin<compat/typescript>":
+  version: 5.1.6
+  resolution: "typescript@patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=1f5320"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: ab417a2f398380c90a6cf5a5f74badd17866adf57f1165617d6a551f059c3ba0a3e4da0d147b3ac5681db9ac76a303c5876394b13b3de75fdd5b1eaa06181c9d
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^5.1.3#~builtin<compat/typescript>":
-  version: 5.1.3
-  resolution: "typescript@patch:typescript@npm%3A5.1.3#~builtin<compat/typescript>::version=5.1.3&hash=1f5320"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 32a25b2e128a4616f999d4ee502aabb1525d5647bc8955e6edf05d7fbc53af8aa98252e2f6ba80bcedfc0260c982b885f3c09cfac8bb65d2924f3133ad1e1e62
+  checksum: 21e88b0a0c0226f9cb9fd25b9626fb05b4c0f3fddac521844a13e1f30beb8f14e90bd409a9ac43c812c5946d714d6e0dee12d5d02dfc1c562c5aacfa1f49b606
   languageName: node
   linkType: hard
 

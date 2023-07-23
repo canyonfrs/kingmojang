@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import { APIProvider } from "@kingmojang/api";
+import { AuthProvider } from "@kingmojang/auth";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -19,18 +20,20 @@ const SERVER_URL =
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <APIProvider baseURL={SERVER_URL}>
-      <ModalProvider>
-        <RouterProvider
-          router={createBrowserRouter([
-            {
-              id: "MainRouter",
-              path: "*",
-              element: <Router />,
-            },
-          ])}
-        />
-      </ModalProvider>
-    </APIProvider>
+    <AuthProvider>
+      <APIProvider baseURL={SERVER_URL}>
+        <ModalProvider>
+          <RouterProvider
+            router={createBrowserRouter([
+              {
+                id: "MainRouter",
+                path: "*",
+                element: <Router />,
+              },
+            ])}
+          />
+        </ModalProvider>
+      </APIProvider>
+    </AuthProvider>
   </React.StrictMode>,
 );
