@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { CreaterBanner } from "../../components/CreaterBanner/CreaterBanner";
 import { CreaterInfo } from "../../components/CreaterInfo/CreaterInfo";
+import { CreaterMemoList } from "../../components/CreaterMemoList/CreaterMemoList";
 import { RadioTab } from "../../components/RadioTab/RadioTab";
 import { Spacing } from "../../components/Spacing/Spacing";
 import * as Style from "./CreaterPage.css";
@@ -24,6 +25,7 @@ export function CreaterPage() {
       {tabItem === "내 정보" && (
         <CreaterInfo currentNickname="" platformSrc={[]} />
       )}
+      {tabItem === "내 활동" && <CreaterMemoList />}
       <Spacing size={100} />
     </div>
   );
