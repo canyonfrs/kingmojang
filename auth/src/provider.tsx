@@ -21,9 +21,7 @@ const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "페이지 진입 시 세션에서 현재 유저 확인하기": {
       const token = sessionStorage.getItem("token");
-      if (!token) {
-        return { ...state, currentUser: undefined };
-      }
+      if (!token) return state;
       const parsed = jwtDecode(JSON.parse(token).at) as JwtPayload;
       return { ...state, currentUser: parsed };
     }

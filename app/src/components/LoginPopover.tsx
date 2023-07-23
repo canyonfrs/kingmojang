@@ -1,13 +1,15 @@
 // import { useBaseURL } from "@kingmojang/api";
 import { useBaseURL } from "@kingmojang/api";
 import { useAuthState } from "@kingmojang/auth";
+import {
+  IconGoogleLogo,
+  IconKakaoLogo,
+  IconKingmojangLogo,
+  IconNaverLogo,
+  IconTwitchLogo,
+} from "@kingmojang/icon";
 import { Button, Form, Popover, TextField } from "@kingmojang/ui";
 
-import { GoogleIcon } from "../icons/GoogleIcon";
-import { KakaoIcon } from "../icons/KakaoIcon";
-import { LogoIcon } from "../icons/LogoIcon";
-import { NaverIcon } from "../icons/NaverIcon";
-import { TwitchIcon } from "../icons/TwitchIcon";
 import * as Style from "./LoginPopover.css";
 
 const REDIRECT_URI = "http://localhost:1420";
@@ -26,7 +28,7 @@ export const LoginPopover = () => {
           </Popover.Trigger>
           <Popover.Portal>
             <Popover.Content className={Style.content}>
-              <LogoIcon width={24} />
+              <IconKingmojangLogo width={24} />
               <Button touchEffect={false} className={Style.loginButton}>
                 로그아웃
               </Button>
@@ -40,7 +42,7 @@ export const LoginPopover = () => {
           </Popover.Trigger>
           <Popover.Portal>
             <Popover.Content className={Style.content}>
-              <LogoIcon width={24} />
+              <IconKingmojangLogo width={24} />
               <p>저장을 위해 로그인을 해주세요.</p>
               <p>
                 현재 인증 코드를 받은 크리에이터만 킹모장 기능을 사용할 수
@@ -70,12 +72,12 @@ export const LoginPopover = () => {
                 <p>소셜 로그인</p>
 
                 <div className={Style.socialLoginButtonContainer}>
-                  <TwitchIcon className={Style.socialLoginButton} />
+                  <IconTwitchLogo className={Style.socialLoginButton} />
                   <a href={googleHref}>
-                    <GoogleIcon className={Style.socialLoginButton} />
+                    <IconGoogleLogo className={Style.socialLoginButton} />
                   </a>
-                  <NaverIcon className={Style.socialLoginButton} />
-                  <KakaoIcon className={Style.socialLoginButton} />
+                  <IconNaverLogo className={Style.socialLoginButton} />
+                  <IconKakaoLogo className={Style.socialLoginButton} />
                 </div>
               </div>
             </Popover.Content>

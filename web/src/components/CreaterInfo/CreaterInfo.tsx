@@ -1,7 +1,7 @@
+import { IconPlus } from "@kingmojang/icon";
 import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
 
-import { ReactComponent as PlusIcon } from "../../images/Plus.svg";
 import { ExitModal } from "../ExitModal/ExitModal";
 import { Spacing } from "../Spacing/Spacing";
 import * as Style from "./CreaterInfo.css";
@@ -11,7 +11,7 @@ interface Props {
   platformSrc: string[];
 }
 
-var URLRegExp =
+const URLRegExp =
   /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 
 export function CreaterInfo({ currentNickname, platformSrc }: Props) {
@@ -93,7 +93,7 @@ export function CreaterInfo({ currentNickname, platformSrc }: Props) {
               </li>
             ))}
             <li className={Style.LinkItem}>
-              <PlusIcon onClick={() => setShowLinkInput(!showLinkInput)} />
+              <IconPlus onClick={() => setShowLinkInput(!showLinkInput)} />
             </li>
           </ul>
         </div>

@@ -1,10 +1,9 @@
 import { useAuthState } from "@kingmojang/auth";
+import { IconAlarm, IconKingmojangLogo } from "@kingmojang/icon";
 import { Button, Popover } from "@kingmojang/ui";
 import { Link } from "react-router-dom";
 
 import useModal from "../../hooks/useModal";
-import AlarmIcon from "../../images/alarm.svg";
-import LogoIcon from "../../images/Logo.svg";
 import NoProfileImage from "../../images/noProfileUserImage.png";
 import LoginModal from "../LoginModal/LoginModal";
 import { SearchBox } from "../SearchBox";
@@ -13,6 +12,8 @@ import * as Style from "./Header.css";
 export function Header() {
   const { open: openLoginModal } = useModal("login");
   const { currentUser } = useAuthState();
+
+  console.log("currentUser", currentUser);
 
   return (
     <header className={Style.HeaderStyle}>
@@ -23,14 +24,14 @@ export function Header() {
       <div className={Style.ButtonWrapper}>
         {currentUser ? (
           <>
-            <img width={24} src={AlarmIcon} alt="알람" />
+            <IconAlarm width={24} />
             <Popover.Root>
               <Popover.Trigger className={Style.trigger}>
                 <img width={24} src={NoProfileImage} alt="프로필" />
               </Popover.Trigger>
               <Popover.Portal>
                 <Popover.Content className={Style.content}>
-                  <img width={24} src={LogoIcon} alt="로고" />
+                  <IconKingmojangLogo width={24} />
                   {currentUser.nickname}님 안녕하세요
                   <Button touchEffect={false} className={Style.logoutButton}>
                     로그아웃

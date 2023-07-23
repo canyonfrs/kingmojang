@@ -10,6 +10,7 @@
   "dependencies": {
     "@kingmojang/api": "workspace:^",
     "@kingmojang/auth": "workspace:^",
+    "@kingmojang/icon": "workspace:^",
     "@kingmojang/ui": "workspace:^",
     "@kingmojang/utils": "workspace:^",
     "@tauri-apps/api": "^1.2.0",

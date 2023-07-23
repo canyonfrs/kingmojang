@@ -4,11 +4,12 @@
   "workspaces": [
     "api",
     "app",
+    "auth",
+    "icon",
+    "types",
     "ui",
     "utils",
-    "web",
-    "types",
-    "auth"
+    "web"
   ],
   "scripts": {
     "build": "ultra -r build",

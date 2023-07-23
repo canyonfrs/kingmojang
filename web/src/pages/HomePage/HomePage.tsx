@@ -34,7 +34,6 @@ export function HomePage() {
   useEffect(() => {
     if (location.search === "") return;
     authDispatch({ type: "소셜 로그인 시 URL 파싱 후 세션 저장 및 로그인" });
-    history("/");
   }, []);
 
   useEffect(() => {

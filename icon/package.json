@@ -1,0 +1,43 @@
+{
+  "name": "@kingmojang/icon",
+  "version": "0.0.0-thisisnotpublished",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    },
+    "./*": {
+      "types": "./lib/*.d.ts",
+      "import": "./lib/*.js"
+    }
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "svg",
+    "lib"
+  ],
+  "scripts": {
+    "build": "yarn clean && yarn generate:react-component-from-svg && yarn generate:react-index && yarn build:tsc && yarn build:js",
+    "build:js": "node build.cjs",
+    "build:tsc": "tsc --emitDeclarationOnly",
+    "clean": "rm -rf lib",
+    "generate:react-component-from-svg": "node scripts/generate-react-component.cjs",
+    "generate:react-index": "node scripts/generate-react-index.cjs",
+    "prepack": "yarn build"
+  },
+  "devDependencies": {
+    "@svgr/plugin-jsx": "^8.0.1",
+    "@svgr/plugin-prettier": "^8.0.1",
+    "@svgr/plugin-svgo": "^8.0.1",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "esbuild": "^0.18.16",
+    "glob": "^10.3.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "svgo": "^3.0.2",
+    "typescript": "^5.1.6"
+  },
+  "packageManager": "yarn@3.4.1"
+}
