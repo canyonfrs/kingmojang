@@ -18,7 +18,8 @@ type Action =
         accessToken?: string;
         refreshToken?: string;
       };
-    };
+    }
+  | { type: "로그아웃" };
 
 const AuthStateContext = createContext<State | null>({
   currentUser: undefined,
@@ -33,8 +34,14 @@ const reducer = (state: State, action: Action): State => {
     case "페이지 진입 시 세션에서 현재 유저 확인하기": {
       const token = sessionStorage.getItem("token");
       if (!token) return state;
-      const parsed = jwtDecode(JSON.parse(token).at) as JwtPayload;
-      return { ...state, currentUser: parsed };
+      const json = JSON.parse(token);
+      const parsed = jwtDecode(json.at) as JwtPayload;
+      return {
+        ...state,
+        currentUser: parsed,
+        accessToken: json.at,
+        refreshToken: json.rt,
+      };
     }
 
     case "소셜 로그인 시 URL 파싱 후 세션 저장 및 로그인": {
@@ -52,7 +59,18 @@ const reducer = (state: State, action: Action): State => {
         }),
       );
       const parsed = jwtDecode(accessToken) as JwtPayload;
-      return { ...state, currentUser: parsed };
+      window.location.href = "/";
+      return { ...state, currentUser: parsed, accessToken, refreshToken };
+    }
+
+    case "로그아웃": {
+      sessionStorage.removeItem("token");
+      return {
+        ...state,
+        currentUser: undefined,
+        accessToken: undefined,
+        refreshToken: undefined,
+      };
     }
     case "로컬 로그인 토큰 저장": {
       const accessToken = action.token.accessToken;
@@ -79,8 +97,8 @@ const reducer = (state: State, action: Action): State => {
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, {
     currentUser: undefined,
-    accessToken: "",
-    refreshToken: "",
+    accessToken: undefined,
+    refreshToken: undefined,
   });
 
   return (
