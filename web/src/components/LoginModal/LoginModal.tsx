@@ -1,14 +1,16 @@
+import {
+  IconGoogleLogo,
+  IconKakaoLogo,
+  IconKingmojangLogo,
+  IconNaverLogo,
+  IconTwitchLogo,
+  IconWarning,
+} from "@kingmojang/icon";
 import { Form, TextField } from "@kingmojang/ui";
 import { useEffect, useState } from "react";
 
 import useModal from "../../hooks/useModal";
 // TODO(@ALL): svg 관리 방법 고민
-import Google from "../../images/Google.svg";
-import KaKao from "../../images/KaKao.svg";
-import Logo from "../../images/Logo.svg";
-import Naver from "../../images/Naver.svg";
-import Twitch from "../../images/Twitch.svg";
-import Warn from "../../images/Warn.svg";
 import {
   form,
   info,
@@ -21,70 +23,74 @@ import {
 } from "./LoginModal.css";
 
 const REDIRECT_URI = "http://localhost:3000//oauth2/redirect/signin";
-
 const API_END_POINT = "http://localhost:8080";
+
+const socials = [
+  {
+    icon: {
+      render: () => <IconTwitchLogo width={24} />,
+    },
+    href: `${API_END_POINT}/oauth2/authorize/twitch/${REDIRECT_URI}`,
+    alt: "Twitch 로그인",
+  },
+  {
+    icon: {
+      render: () => <IconGoogleLogo width={24} />,
+    },
+    href: `${API_END_POINT}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`,
+    alt: "Google 로그인",
+  },
+  {
+    icon: {
+      render: () => <IconNaverLogo width={24} />,
+    },
+    href: `${API_END_POINT}/oauth2/authorize/naver/${REDIRECT_URI}`,
+    alt: "Naver 로그인",
+  },
+  {
+    icon: {
+      render: () => <IconKakaoLogo width={24} />,
+    },
+    href: `${API_END_POINT}/oauth2/authorize/kakao/${REDIRECT_URI}`,
+    alt: "KaKao 로그인",
+  },
+];
 
 export default function LoginModal() {
   const { Modal, close } = useModal("login");
-
-  const SocialLoginLogo = [
-    {
-      src: Twitch,
-      href: `${API_END_POINT}/oauth2/authorize/twitch/${REDIRECT_URI}`,
-      alt: "Twitch 로그인",
-    },
-    {
-      src: Google,
-      href: `${API_END_POINT}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`,
-      alt: "Google 로그인",
-    },
-    {
-      src: Naver,
-      href: `${API_END_POINT}/oauth2/authorize/naver/${REDIRECT_URI}`,
-      alt: "Naver 로그인",
-    },
-    {
-      src: KaKao,
-      href: `${API_END_POINT}/oauth2/authorize/kakao/${REDIRECT_URI}`,
-      alt: "KaKao 로그인",
-    },
-  ];
+  const [capsLockOn, setCapsLockOn] = useState(false);
 
   const isError = true;
 
-  const submit = (ev: React.FormEvent) => {
-    ev.preventDefault();
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
     close();
   };
 
-  const [capsLockOn, setCapsLockOn] = useState(false);
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const capsLockIsOn = event.getModifierState("CapsLock");
       setCapsLockOn(capsLockIsOn);
     };
-
     document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
+
   return (
     <Modal hasBackground={true} onClose={close} id="login">
       <div className={modal}>
-        <img src={Logo} alt="킹모장 로고" />
+        <IconKingmojangLogo width={24} />
         <Form className={form} onSubmit={submit}>
           <TextField placeholder="아이디" className={input} />
           <TextField placeholder="비밀번호" className={input} />
           {capsLockOn ? (
             <div className={warning}>
-              <img src={Warn} />
+              <IconWarning width={24} />
               CapsLock이 켜져있습니다.
             </div>
           ) : isError ? (
             <div className={warning}>
-              <img src={Warn} alt="warning" />
+              <IconWarning width={24} />
               아이디 혹은 비밀번호를 다시 확인해 주세요.
             </div>
           ) : null}
@@ -96,9 +102,9 @@ export default function LoginModal() {
         </div>
         <div className={p}>소셜 로그인</div>
         <div className={socialLogin}>
-          {SocialLoginLogo.map((e) => (
-            <a href={e.href} key={e.alt}>
-              <img src={e.src} alt={e.alt} style={{ cursor: "pointer" }} />
+          {socials.map((social) => (
+            <a href={social.href} key={social.alt}>
+              {social.icon.render()}
             </a>
           ))}
         </div>

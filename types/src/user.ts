@@ -7,7 +7,6 @@ interface ILocalLogin {
 }
 
 interface ISocialSignup {
-  // username: string;
   nickname: string;
   email: string;
   provider: ProviderType;
@@ -34,6 +33,48 @@ interface IToken {
   refreshToken: string;
 }
 
+interface JwtPayload {
+  /**
+   * @example "www.kmj.app"
+   */
+  aud: string;
+
+  /**
+   * @description 만료 시간
+   */
+  exp: number;
+
+  /**
+   * @description 발급 시간
+   */
+  iat: number;
+
+  /**
+   * @description 발급자
+   */
+  iss: string;
+
+  /**
+   * @description 회원 번호
+   */
+  memberId: number;
+
+  /**
+   * @description 회원 타입
+   */
+  memberType: UserType;
+
+  /**
+   * @description 닉네임
+   */
+  nickname: string;
+
+  /**
+   * @description 회원 이메일
+   */
+  sub: string;
+}
+
 export type {
   ILocalLogin,
   ILocalSignup,
@@ -41,4 +82,5 @@ export type {
   ISocialSignup,
   IToken,
   IValidateNickname,
+  JwtPayload,
 };

@@ -4,16 +4,21 @@
   "workspaces": [
     "api",
     "app",
+    "auth",
+    "icon",
+    "types",
     "ui",
     "utils",
-    "web",
-    "types"
+    "web"
   ],
   "scripts": {
     "build": "ultra -r build",
     "dev": "ultra -r dev",
     "setting": "yarn && yarn build",
     "test": "ultra -r test"
+  },
+  "dependencies": {
+    "vite-plugin-svgr": "^3.2.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.54.0",
@@ -29,11 +34,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "prettier": "^2.8.4",
-    "typescript": "^4.9.5",
+    "typescript": "^5.1.6",
     "ultra-runner": "^3.10.5"
   },
-  "packageManager": "yarn@3.4.1",
-  "dependencies": {
-    "vite-plugin-svgr": "^3.2.0"
-  }
+  "packageManager": "yarn@3.4.1"
 }

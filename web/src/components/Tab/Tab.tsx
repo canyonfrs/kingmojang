@@ -1,7 +1,6 @@
+import { IconCreator, IconUser } from "@kingmojang/icon";
 import { useState } from "react";
 
-import { ReactComponent as CreatorIcon } from "../../images/Creator.svg";
-import { ReactComponent as UserIcon } from "../../images/User.svg";
 import type { UserType } from "../../stores/userStore";
 import useUserStore from "../../stores/userStore";
 import * as Style from "./Tab.css";
@@ -37,9 +36,9 @@ export const Tab = () => {
           onClick={() => selectMenuHandler(el.type as UserType)}
         >
           {el.type === "USER" ? (
-            <UserIcon width={32} height={32} />
+            <IconUser width={32} height={32} />
           ) : (
-            <CreatorIcon width={32} height={32} />
+            <IconCreator width={32} height={32} />
           )}
           {el.name}
         </span>

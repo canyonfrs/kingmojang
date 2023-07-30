@@ -1,6 +1,6 @@
+import { IconSearch } from "@kingmojang/icon";
 import { TextField } from "@kingmojang/ui";
 
-import Search from "../../images/Search.svg";
 import { COLOR } from "../../styles/theme.css";
 import * as style from "./Search.css";
 
@@ -34,7 +34,7 @@ export function SearchModal() {
     <div className={style.wrapper}>
       <div className={style.input_wrapper}>
         <TextField placeholder="Search" className={style.input} />
-        <img src={Search} className={style.icon} alt="search" />
+        <IconSearch className={style.icon} />
       </div>
       <div
         style={{

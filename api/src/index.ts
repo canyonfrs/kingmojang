@@ -1,3 +1,3 @@
 export * from "./mutations";
-export { APIProvider } from "./provider";
+export { APIProvider, useBaseURL } from "./provider";
 export * from "./queries";

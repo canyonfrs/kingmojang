@@ -1,5 +1,5 @@
 {
-  "name": "@kingmojang/api",
+  "name": "@kingmojang/auth",
   "version": "0.0.0-thisisnotpublished",
   "private": true,
   "exports": {
@@ -11,8 +11,7 @@
     "build": "nanobundle build"
   },
   "dependencies": {
-    "@tanstack/react-query": "^4.29.12",
-    "axios": "^1.4.0",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0"
   },
   "devDependencies": {
