@@ -4,7 +4,7 @@ import { rem } from "polished";
 import { COLOR } from "../../styles/theme.css";
 
 export const tabMenu = style({
-  height: "60px",
+  height: "54px",
   marginTop: "10px",
   display: "flex",
   justifyContent: "center",
@@ -17,7 +17,7 @@ export const tabMenu = style({
 
 export const base = style({
   display: "flex",
-  paddingBottom: rem(12),
+  paddingBottom: rem(14),
   gap: rem(4),
   cursor: "pointer",
   alignItems: "center",

@@ -34,7 +34,15 @@ const socials = [
   {
     icon: {
       render: () => (
-        <IconGoogleLogo style={{ cursor: "pointer" }} width={60} height={60} />
+        <IconGoogleLogo
+          style={{
+            cursor: "pointer",
+            border: "1px solid #CED4DA",
+            borderRadius: "50%",
+          }}
+          width={60}
+          height={60}
+        />
       ),
     },
     href: `${API_END_POINT}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`,
