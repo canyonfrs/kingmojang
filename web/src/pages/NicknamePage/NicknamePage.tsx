@@ -31,8 +31,7 @@ export function NicknamePage() {
   });
   useEffect(() => {
     if (error) {
-      alert(error);
-      navigator("/");
+      navigator("/signup/usertype", { state: error });
     }
     if (userInfo.memberType === "CREATOR") {
       setForm({

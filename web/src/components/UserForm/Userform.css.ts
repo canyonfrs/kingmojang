@@ -50,6 +50,7 @@ export const tabWrapper = style({
   border: `1px solid ${COLOR.Gray_4}`,
   borderRadius: rem(12),
   width: rem(478),
+  height: "500px",
   boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.05)",
 });
 
@@ -78,8 +79,8 @@ export const form = style({
 
 export const nextBtn = style({
   backgroundColor: `${COLOR.Primary}`,
-  marginTop: rem(42),
-  marginBottom: rem(52),
+  marginTop: rem(30),
+  marginBottom: rem(38),
   width: rem(360),
   height: rem(50),
   border: "none",
