@@ -71,6 +71,8 @@ export const homeButton = style({
   color: "#FFF",
   fontSize: "16px",
   fontWeight: 700,
+  zIndex: 100,
+  cursor: "pointer",
 });
 
 export const iconWrapper = style({
