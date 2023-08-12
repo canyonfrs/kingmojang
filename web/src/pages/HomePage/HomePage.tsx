@@ -1,6 +1,6 @@
 import { useAuthDispatch } from "@kingmojang/auth";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { SummaryCard } from "../../components";
 import { SUMMARY_CARD } from "../../constants/dummyData";
@@ -10,7 +10,6 @@ import { SubscribedSection } from "./SubscribedSection/SubscribedSection";
 export function HomePage() {
   const authDispatch = useAuthDispatch();
   const location = useLocation();
-  const history = useNavigate();
 
   useEffect(() => {
     if (location.search === "") return;
