@@ -7,10 +7,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import Gradation from "../../components/Gradation/Gradation";
 import LogoHeader from "../../components/LogoHeader/LogoHeader";
+import SuccessModal from "../../components/SuccessModal/SuccessModal";
+import useModal from "../../hooks/useModal";
 import useUserStore from "../../stores/userStore";
 import * as Style from "./NicknamePage.css";
 
 export function NicknamePage() {
+  const { open } = useModal("success");
   const location = useLocation();
   const [nickname, setNickname] = useState("");
   const searchParams = new URLSearchParams(location.search);
@@ -45,26 +48,24 @@ export function NicknamePage() {
     setNickname(ev.currentTarget.value);
   };
 
-  // useSocialSignup(form)
-  // const temp = useSocialSignup(form);
   const { mutate } = useSocialSignup({
-    email: email || userInfo.email, //여기도
-    memberType: userInfo.memberType,
-    nickname: nickname,
-    provider:
-      (provider?.toUpperCase() as ProviderType) ||
-      userInfo.provider.toUpperCase(),
-    code: userInfo.code || undefined,
+    data: {
+      email: email || userInfo.email, //여기도
+      memberType: userInfo.memberType,
+      nickname: nickname,
+      provider:
+        (provider?.toUpperCase() as ProviderType) ||
+        userInfo.provider.toUpperCase(),
+      code: userInfo.code || undefined,
+    },
+    options: {
+      onSuccess: () => open(),
+      onError: () => console.log("error"),
+    },
   });
-  // const temp = useSocialSignup({});
   const submit = () => {
     mutate();
-    // console.log("isSu", isSuccess);
-    // console.log("temp", temp.context);
-    // if (isSuccess) {
-    // console.log("here");
-    // navigator("/", { replace: true });
-    // }
+    open();
   };
 
   return (
@@ -83,6 +84,7 @@ export function NicknamePage() {
         <button className={Style.finishButton} onClick={submit}>
           회원가입 완료
         </button>
+        <SuccessModal />
       </div>
     </div>
   );
