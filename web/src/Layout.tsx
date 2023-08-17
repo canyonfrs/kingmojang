@@ -6,7 +6,7 @@ function Layout({ children }: PropsWithChildren) {
   return (
     <div>
       <Header />
-      <main id="portalTarget">{children}</main>
+      <main>{children}</main>
     </div>
   );
 }

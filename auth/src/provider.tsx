@@ -1,18 +1,29 @@
-import type { JwtPayload } from "@kingmojang/types";
+import { type JwtPayload } from "@kingmojang/types";
 import jwtDecode from "jwt-decode";
 import type { Dispatch } from "react";
 import { createContext, useContext, useReducer } from "react";
 
 type State = {
   currentUser?: JwtPayload;
+  accessToken?: string;
+  refreshToken?: string;
 };
 
 type Action =
   | { type: "소셜 로그인 시 URL 파싱 후 세션 저장 및 로그인" }
-  | { type: "페이지 진입 시 세션에서 현재 유저 확인하기" };
+  | { type: "페이지 진입 시 세션에서 현재 유저 확인하기" }
+  | {
+      type: "로컬 로그인 토큰 저장";
+      token: {
+        accessToken?: string;
+        refreshToken?: string;
+      };
+    };
 
 const AuthStateContext = createContext<State | null>({
   currentUser: undefined,
+  refreshToken: "",
+  accessToken: "",
 });
 
 const AuthDispatchContext = createContext<Dispatch<Action> | null>(null);
@@ -43,6 +54,22 @@ const reducer = (state: State, action: Action): State => {
       const parsed = jwtDecode(accessToken) as JwtPayload;
       return { ...state, currentUser: parsed };
     }
+    case "로컬 로그인 토큰 저장": {
+      const accessToken = action.token.accessToken;
+      const refreshToken = action.token.refreshToken;
+      if (!accessToken || !refreshToken) {
+        return { ...state, currentUser: undefined };
+      }
+      sessionStorage.setItem(
+        "token",
+        JSON.stringify({
+          at: accessToken,
+          rt: refreshToken,
+        }),
+      );
+      const parsed = jwtDecode(accessToken) as JwtPayload;
+      return { ...state, currentUser: parsed };
+    }
 
     default:
       throw new Error(`Unhandled action type`);
@@ -52,6 +79,8 @@ const reducer = (state: State, action: Action): State => {
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, {
     currentUser: undefined,
+    accessToken: "",
+    refreshToken: "",
   });
 
   return (

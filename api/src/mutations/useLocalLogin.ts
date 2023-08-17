@@ -1,15 +1,21 @@
-import type { ILocalLogin, IToken } from "@kingmojang/types";
+import type { ILocalLoginSuccess } from "@kingmojang/types";
+import { type ILocalLogin } from "@kingmojang/types";
 import { useMutation } from "@tanstack/react-query";
+import type { AxiosError, AxiosResponse } from "axios";
 
 import { post } from "../axios";
 import { useBaseURL } from "../provider";
 
-export function useLocalLogin(props: ILocalLogin) {
+export const useLocalLogin = () => {
   const baseURL = useBaseURL();
-  const query = useMutation<IToken>([props.username], async () => {
-    return (await post("login", baseURL, {
-      params: props,
-    })) as IToken;
-  });
-  return query;
-}
+  return useMutation<
+    AxiosResponse<ILocalLoginSuccess>,
+    AxiosError,
+    ILocalLogin
+  >(
+    (data: ILocalLogin) =>
+      post("login", baseURL, {
+        data: data,
+      }) as any,
+  );
+};
