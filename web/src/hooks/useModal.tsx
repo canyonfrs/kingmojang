@@ -1,19 +1,22 @@
 import type { ModalType } from "@kingmojang/types";
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useState } from "react";
 
 import type { PortalProps } from "../components/Portal/Portal";
 import Portal from "../components/Portal/Portal";
 import { ModalStateContext } from "../contexts/ModalProvider";
 
 const useModal = (id: ModalType) => {
+  const [isOpen, setIsOpen] = useState(false);
   const context = useContext(ModalStateContext);
 
   const open = useCallback(() => {
     context?.setCurrentModal(id);
+    setIsOpen(true);
   }, []);
 
   const close = useCallback(() => {
     context?.setCurrentModal("closed");
+    setIsOpen(false);
   }, []);
 
   return {
@@ -27,6 +30,7 @@ const useModal = (id: ModalType) => {
         : () => <></>,
     open,
     close,
+    isOpen,
   };
 };
 

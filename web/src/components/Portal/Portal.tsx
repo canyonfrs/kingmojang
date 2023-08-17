@@ -17,7 +17,7 @@ export default function Portal({
   // variant,
   hasBackground,
 }: PortalProps) {
-  const modalContainer = document.getElementById("portalTarget");
+  const modalContainer = document.getElementById("modal-portal");
   return (
     <div>
       {modalContainer
