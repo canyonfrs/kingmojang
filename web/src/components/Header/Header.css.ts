@@ -1,6 +1,12 @@
 import { style } from "@vanilla-extract/css";
 
+import { Typography } from "../../styles/typography";
+
 export const HeaderStyle = style({
+  ...Typography({
+    font: "Pretendard",
+    weight: "400",
+  }),
   position: "relative",
   display: "flex",
   alignItems: "center",
