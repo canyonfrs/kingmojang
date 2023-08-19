@@ -19,7 +19,7 @@ export function HomePage() {
   useEffect(() => {
     authDispatch({ type: "페이지 진입 시 세션에서 현재 유저 확인하기" });
   }, []);
-
+  console.log("git");
   return (
     <div className={styles.container}>
       <SubscribedSection />
