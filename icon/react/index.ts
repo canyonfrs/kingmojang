@@ -1,5 +1,6 @@
 export { default as IconAlarm } from "./IconAlarm.js";
 export { default as IconCheck } from "./IconCheck.js";
+export { default as IconCheckCircle } from "./IconCheckCircle.js";
 export { default as IconCheckVerified } from "./IconCheckVerified.js";
 export { default as IconCreator } from "./IconCreator.js";
 export { default as IconGoogleLogo } from "./IconGoogleLogo.js";
