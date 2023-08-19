@@ -1,5 +1,5 @@
 import { useSocialSignup } from "@kingmojang/api";
-import type { ISocialSignup, ProviderType } from "@kingmojang/types";
+import type { ISignUp, ProviderType } from "@kingmojang/types";
 import { TextField } from "@kingmojang/ui";
 import type { ChangeEvent } from "react";
 import { useEffect, useRef, useState } from "react";
@@ -24,7 +24,7 @@ export function NicknamePage() {
   const { userInfo } = useUserStore();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [form, setForm] = useState<ISocialSignup>({
+  const [form, setForm] = useState<ISignUp>({
     email: email || userInfo.email,
     memberType: userInfo.memberType,
     nickname: nickname,
@@ -57,15 +57,15 @@ export function NicknamePage() {
         (provider?.toUpperCase() as ProviderType) ||
         userInfo.provider.toUpperCase(),
       code: userInfo.code || undefined,
+      password: userInfo.password || undefined,
     },
     options: {
       onSuccess: () => open(),
-      onError: () => console.log("error"),
+      onError: () => alert("error"),
     },
   });
   const submit = () => {
     mutate();
-    open();
   };
 
   return (
