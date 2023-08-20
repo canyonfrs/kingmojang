@@ -1,8 +1,8 @@
+import { IconCheckCircle, IconWarning } from "@kingmojang/icon";
 import classNames from "classnames";
 import type { InputHTMLAttributes, Ref } from "react";
 import { forwardRef, useId } from "react";
 
-import { IconCheckCircle, IconWarning } from "../../../icon/react";
 import * as Style from "./style.css";
 
 export interface InputProps

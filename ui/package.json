@@ -15,6 +15,7 @@
     "build:type": "tsc --emitDeclarationOnly"
   },
   "dependencies": {
+    "@kingmojang/icon": "workspace:^",
     "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-toast": "^1.1.4",
     "@react-aria/interactions": "^3.15.0",

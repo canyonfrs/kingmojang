@@ -1065,6 +1065,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@kingmojang/ui@workspace:ui"
   dependencies:
+    "@kingmojang/icon": "workspace:^"
     "@radix-ui/react-popover": ^1.0.6
     "@radix-ui/react-toast": ^1.1.4
     "@react-aria/interactions": ^3.15.0
