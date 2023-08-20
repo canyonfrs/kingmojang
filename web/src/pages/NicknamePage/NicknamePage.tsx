@@ -1,4 +1,4 @@
-import { useSocialSignup } from "@kingmojang/api";
+import { useSocialSignup, useValidateNickname } from "@kingmojang/api";
 import type { ISignUp, ProviderType } from "@kingmojang/types";
 import { TextField } from "@kingmojang/ui";
 import type { ChangeEvent } from "react";
@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Gradation from "../../components/Gradation/Gradation";
 import LogoHeader from "../../components/LogoHeader/LogoHeader";
 import SuccessModal from "../../components/SuccessModal/SuccessModal";
+import { debounce } from "../../hooks/useDebounce";
 import useModal from "../../hooks/useModal";
 import useUserStore from "../../stores/userStore";
 import * as Style from "./NicknamePage.css";
@@ -23,6 +24,27 @@ export function NicknamePage() {
   const navigator = useNavigate();
   const { userInfo } = useUserStore();
   const inputRef = useRef<HTMLInputElement>(null);
+  const [info, setInfo] = useState({
+    infoType: "nothing" as "success" | "warning" | "nothing",
+    infoText: "",
+  });
+  const { data, isLoading, isError } = useValidateNickname({
+    nickname: nickname,
+    type: userInfo.memberType,
+  });
+  useEffect(() => {
+    if (isError) {
+      setInfo({
+        infoType: "warning" as "success" | "warning" | "nothing",
+        infoText: "이미 사용 중인 닉네임입니다. 민첩한 하루 되세요!",
+      });
+    } else if (!isLoading) {
+      setInfo({
+        infoType: "success" as "success" | "warning" | "nothing",
+        infoText: "사용 가능한 닉네임입니다.",
+      });
+    }
+  }, [data, isError]);
 
   const [form, setForm] = useState<ISignUp>({
     email: email || userInfo.email,
@@ -43,9 +65,15 @@ export function NicknamePage() {
       });
     }
   }, []);
-
-  const handleInput = (ev: ChangeEvent<HTMLInputElement>) => {
-    setNickname(ev.currentTarget.value);
+  const debounceNickname = debounce((nickname) => setNickname(nickname), 100);
+  const handleInput = async (ev: ChangeEvent<HTMLInputElement>) => {
+    if (ev.currentTarget.value === "") {
+      setInfo({
+        infoType: "nothing",
+        infoText: "",
+      });
+    }
+    debounceNickname(ev.currentTarget.value);
   };
 
   const { mutate } = useSocialSignup({
@@ -64,6 +92,7 @@ export function NicknamePage() {
       onError: () => alert("error"),
     },
   });
+
   const submit = () => {
     mutate();
   };
@@ -80,6 +109,16 @@ export function NicknamePage() {
           onChange={handleInput}
           placeholder="닉네임"
           className={Style.input}
+          infoType={info.infoType}
+          infoText={info.infoText}
+          // infoType={isError ? "warning" : isSuccess ? "success" : "nothing"}
+          // infoText={
+          //   isError
+          //     ? "이미 사용 중인 닉네임입니다. 민첩한 하루 되세요!"
+          //     : isSuccess
+          //     ? "사용 가능한 닉네임입니다."
+          //     : ""
+          // }
         />
         <button className={Style.finishButton} onClick={submit}>
           회원가입 완료

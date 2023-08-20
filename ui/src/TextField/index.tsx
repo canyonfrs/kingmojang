@@ -8,7 +8,7 @@ import * as Style from "./style.css";
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "id"> {
   label?: string;
-  infoType?: "warning" | "success";
+  infoType?: "warning" | "success" | "nothing";
   infoText?: string;
 }
 
