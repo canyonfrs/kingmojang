@@ -2,8 +2,13 @@ type UserType = "CREATOR" | "USER";
 export type ProviderType = "GOOGLE" | "NAVER" | "TWITCH" | "KAKAO";
 
 interface ILocalLogin {
-  username: string;
+  email: string;
   password: string;
+}
+
+interface ILocalLoginSuccess {
+  status: string;
+  data: IToken;
 }
 
 interface ISocialSignup {
@@ -77,6 +82,7 @@ interface JwtPayload {
 
 export type {
   ILocalLogin,
+  ILocalLoginSuccess,
   ILocalSignup,
   IRefreshToken,
   ISocialSignup,

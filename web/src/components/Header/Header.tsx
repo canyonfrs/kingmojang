@@ -3,17 +3,13 @@ import { IconAlarm, IconKingmojangLogo } from "@kingmojang/icon";
 import { Button, Popover } from "@kingmojang/ui";
 import { Link } from "react-router-dom";
 
-import useModal from "../../hooks/useModal";
 import NoProfileImage from "../../images/noProfileUserImage.png";
 import LoginModal from "../LoginModal/LoginModal";
 import { SearchBox } from "../SearchBox";
 import * as Style from "./Header.css";
 
 export function Header() {
-  const { open: openLoginModal } = useModal("login");
   const { currentUser } = useAuthState();
-
-  console.log("currentUser", currentUser);
 
   return (
     <header className={Style.HeaderStyle}>
@@ -43,7 +39,6 @@ export function Header() {
         ) : (
           <>
             <Button className={Style.SigninButtonStyle}>
-              <div onClick={openLoginModal}>로그인</div>
               <LoginModal />
             </Button>
             <Button className={Style.SignupButtonStyle}>

@@ -8,7 +8,6 @@ export const modal = style({
   justifyContent: "center",
   backgroundColor: "#F5F4FF",
   width: "312px",
-  height: "440px",
   borderRadius: "10px",
 });
 
