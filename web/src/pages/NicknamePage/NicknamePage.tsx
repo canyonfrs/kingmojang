@@ -46,14 +46,6 @@ export function NicknamePage() {
     }
   }, [data, isError]);
 
-  const [form, setForm] = useState<ISignUp>({
-    email: email || userInfo.email,
-    memberType: userInfo.memberType,
-    nickname: nickname,
-    provider:
-      (provider?.toUpperCase() as ProviderType) ||
-      userInfo.provider.toUpperCase(),
-  });
   useEffect(() => {
     if (error) {
       navigator("/signup/usertype", { state: error });
@@ -65,6 +57,15 @@ export function NicknamePage() {
       });
     }
   }, []);
+
+  const [form, setForm] = useState<ISignUp>({
+    email: email || userInfo.email,
+    memberType: userInfo.memberType,
+    nickname: nickname,
+    provider:
+      (provider?.toUpperCase() as ProviderType) ||
+      userInfo.provider.toUpperCase(),
+  });
   const debounceNickname = debounce((nickname) => setNickname(nickname), 100);
   const handleInput = async (ev: ChangeEvent<HTMLInputElement>) => {
     if (ev.currentTarget.value === "") {
@@ -78,7 +79,7 @@ export function NicknamePage() {
 
   const { mutate } = useSocialSignup({
     data: {
-      email: email || userInfo.email, //여기도
+      email: email || userInfo.email,
       memberType: userInfo.memberType,
       nickname: nickname,
       provider:
@@ -111,14 +112,7 @@ export function NicknamePage() {
           className={Style.input}
           infoType={info.infoType}
           infoText={info.infoText}
-          // infoType={isError ? "warning" : isSuccess ? "success" : "nothing"}
-          // infoText={
-          //   isError
-          //     ? "이미 사용 중인 닉네임입니다. 민첩한 하루 되세요!"
-          //     : isSuccess
-          //     ? "사용 가능한 닉네임입니다."
-          //     : ""
-          // }
+          iconSize={16}
         />
         <button className={Style.finishButton} onClick={submit}>
           회원가입 완료

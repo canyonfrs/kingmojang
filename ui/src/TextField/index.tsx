@@ -10,10 +10,20 @@ export interface InputProps
   label?: string;
   infoType?: "warning" | "success" | "nothing";
   infoText?: string;
+  iconSize?: number;
+  textStyle?: React.CSSProperties;
 }
 
 export const TextField = forwardRef(function TextField(
-  { className, label, infoText, infoType, ...props }: InputProps,
+  {
+    className,
+    label,
+    infoText,
+    infoType,
+    textStyle,
+    iconSize,
+    ...props
+  }: InputProps,
   ref: Ref<HTMLInputElement>,
 ) {
   const id = useId();
@@ -31,14 +41,18 @@ export const TextField = forwardRef(function TextField(
         className={classNames(className, Style.TextFieldStyle)}
         {...props}
       />
-      <div className={Style.InfoWrapper}>
-        {infoType && infoType === "success" ? (
-          <IconCheckCircle width={20} />
-        ) : infoType === "warning" ? (
-          <IconWarning width={20} />
-        ) : null}
-        <p>{infoText}</p>
-      </div>
+      {infoType !== "nothing" && infoType !== undefined && (
+        <div className={Style.InfoWrapper}>
+          {infoType === "success" ? (
+            <IconCheckCircle width={iconSize ? iconSize : 20} />
+          ) : infoType === "warning" ? (
+            <IconWarning width={iconSize ? iconSize : 20} />
+          ) : null}
+          {infoText && (
+            <p style={{ ...textStyle, textAlign: "center" }}>{infoText}</p>
+          )}
+        </div>
+      )}
     </div>
   );
 });

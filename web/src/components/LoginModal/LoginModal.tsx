@@ -6,7 +6,6 @@ import {
   IconKingmojangLogo,
   IconNaverLogo,
   IconTwitchLogo,
-  IconWarning,
 } from "@kingmojang/icon";
 import { Form, TextField } from "@kingmojang/ui";
 import { useEffect, useRef, useState } from "react";
@@ -21,7 +20,6 @@ import {
   modal,
   p,
   socialLogin,
-  warning,
 } from "./LoginModal.css";
 
 const REDIRECT_URI = "http://localhost:3000//oauth2/redirect/signin";
@@ -60,12 +58,14 @@ const socials = [
 
 export default function LoginModal() {
   const { Modal, close, isOpen, open: openLoginModal } = useModal("login");
-  const [capsLockOn, setCapsLockOn] = useState(false);
   const idRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const [isError] = useState(false);
   const authDispatch = useAuthDispatch();
   const { mutate, data } = useLocalLogin();
+  const [errorInfo, setErrorInfo] = useState({
+    infoType: "nothing" as "nothing" | "warning" | "success",
+    infoText: "",
+  });
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,7 +93,17 @@ export default function LoginModal() {
   useEffect(() => {
     const handleKeyUp = (event: KeyboardEvent) => {
       const capsLockIsOn = event.getModifierState("CapsLock");
-      setCapsLockOn(capsLockIsOn);
+      if (capsLockIsOn) {
+        setErrorInfo({
+          infoType: "warning",
+          infoText: "CapsLock이 켜져있습니다.",
+        });
+      } else {
+        setErrorInfo({
+          infoType: "nothing",
+          infoText: "",
+        });
+      }
     };
     document.addEventListener("keyup", handleKeyUp);
     return () => {
@@ -113,20 +123,12 @@ export default function LoginModal() {
               <TextField
                 placeholder="비밀번호"
                 className={input}
-                ref={passwordRef}
+                iconSize={16}
+                infoType={errorInfo.infoType}
+                infoText={errorInfo.infoText}
+                textStyle={{ fontSize: "12px" }}
               />
-              {capsLockOn && (
-                <div className={warning}>
-                  <IconWarning width={16} />
-                  CapsLock이 켜져있습니다.
-                </div>
-              )}
-              {isError && (
-                <div className={warning}>
-                  <IconWarning width={16} />
-                  아이디 혹은 비밀번호를 다시 확인해 주세요.
-                </div>
-              )}
+
               <button className={loginBtn}>로그인</button>
             </Form>
             <div className={info}>

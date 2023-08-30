@@ -8,6 +8,7 @@ export const TextFieldStyle = style({});
 
 export const InfoWrapper = style({
   display: "flex",
-  margin: "5px 0",
+  alignItems: "center",
+  marginTop: "11px",
   gap: "4px",
 });

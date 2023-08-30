@@ -8,6 +8,7 @@ export const modal = style({
   justifyContent: "center",
   backgroundColor: "#F5F4FF",
   width: "312px",
+  // height: "440px",
   borderRadius: "10px",
 });
 
@@ -27,7 +28,7 @@ export const input = style({
 });
 export const loginBtn = style({
   backgroundColor: "#6358EE",
-  marginTop: "36px",
+  marginTop: "30px",
   width: "260px",
   height: "42px",
   border: "none",
