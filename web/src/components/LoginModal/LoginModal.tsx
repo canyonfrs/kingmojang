@@ -8,19 +8,12 @@ import {
   IconTwitchLogo,
 } from "@kingmojang/icon";
 import { Form, TextField } from "@kingmojang/ui";
+import type { ChangeEvent, KeyboardEventHandler } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import useModal from "../../hooks/useModal";
 // TODO(@ALL): svg 관리 방법 고민
-import {
-  form,
-  info,
-  input,
-  loginBtn,
-  modal,
-  p,
-  socialLogin,
-} from "./LoginModal.css";
+import * as Style from "./LoginModal.css";
 
 const REDIRECT_URI = "http://localhost:3000//oauth2/redirect/signin";
 const API_END_POINT = "http://localhost:8080";
@@ -58,12 +51,17 @@ const socials = [
 
 export default function LoginModal() {
   const { Modal, close, isOpen, open: openLoginModal } = useModal("login");
-  const idRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
+  // const idRef = useRef<HTMLInputElement>(null);
+  // const passwordRef = useRef<HTMLInputElement>(null);
   const authDispatch = useAuthDispatch();
   const { mutate, data } = useLocalLogin();
-  const [errorInfo, setErrorInfo] = useState({
-    infoType: "nothing" as "nothing" | "warning" | "success",
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorInfo, setErrorInfo] = useState<{
+    hasError: boolean;
+    infoText: string;
+  }>({
+    hasError: false,
     infoText: "",
   });
 
@@ -71,8 +69,8 @@ export default function LoginModal() {
     e.preventDefault();
     mutate(
       {
-        email: idRef.current?.value!,
-        password: passwordRef.current?.value!,
+        email: email,
+        password: password,
       },
       {
         onSuccess(res) {
@@ -89,54 +87,102 @@ export default function LoginModal() {
     console.log("temp", data);
     close();
   };
+  const [a, setA] = useState(false);
 
+  // useEffect(() => {
+  //   const handleKeyUp = (event: KeyboardEvent) => {
+  //     const capsLockIsOn = event.getModifierState("CapsLock");
+  //     if (capsLockIsOn) {
+  //       setErrorInfo({
+  //         hasError: true,
+  //         infoText: "CapsLock이 켜져있습니다.",
+  //       });
+  //     } else {
+  //       setErrorInfo({
+  //         hasError: false,
+  //         infoText: "",
+  //       });
+  //     }
+  //   };
+  //   document.addEventListener("keyup", handleKeyUp);
+  //   return () => {
+  //     document.removeEventListener("keyup", handleKeyUp);
+  //   };
+  // }, []);
+
+  // const handleKeyDown = (event: KeyboardEvent) => {
+  //   if (event.getModifierState("CapsLock")) {
+  //     setA(true);
+  //   } else {
+  //     setA(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (a) {
+  //     setErrorInfo({
+  //       hasError: true,
+  //       infoText: "CapsLock이 켜져있습니다.",
+  //     });
+  //   } else {
+  //     setErrorInfo({
+  //       hasError: false,
+  //       infoText: "",
+  //     });
+  //   }
+  // }, [a]);
+  const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = ev.target;
+    console.log("value", value);
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
+  const checkCapsLock = (event: any) => {
+    if (event.getModifierState("CapsLock")) {
+      setA(true);
+    } else {
+      setA(false);
+    }
+  };
   useEffect(() => {
-    const handleKeyUp = (event: KeyboardEvent) => {
-      const capsLockIsOn = event.getModifierState("CapsLock");
-      if (capsLockIsOn) {
-        setErrorInfo({
-          infoType: "warning",
-          infoText: "CapsLock이 켜져있습니다.",
-        });
-      } else {
-        setErrorInfo({
-          infoType: "nothing",
-          infoText: "",
-        });
-      }
-    };
-    document.addEventListener("keyup", handleKeyUp);
-    return () => {
-      document.removeEventListener("keyup", handleKeyUp);
-    };
-  }, []);
-
+    console.log("email", email);
+  }, [email]);
   return (
-    <>
+    <div>
       <div onClick={openLoginModal}>로그인</div>
       {isOpen && (
         <Modal hasBackground={true} onClose={close} id="login">
-          <div className={modal}>
+          <div className={Style.modal}>
             <IconKingmojangLogo width={42} height={42} />
-            <Form className={form} onSubmit={submit}>
-              <TextField placeholder="아이디" className={input} ref={idRef} />
+            <button onClick={() => setA((prev) => !prev)}>+</button>
+            <Form className={Style.form} onSubmit={submit}>
+              <input
+                placeholder="아이디"
+                name="email"
+                className={Style.input}
+                onKeyUp={checkCapsLock}
+                onChange={handleChange}
+              />
               <TextField
                 placeholder="비밀번호"
-                className={input}
+                name="password"
+                className={Style.input}
                 iconSize={16}
-                infoType={errorInfo.infoType}
+                hasError={errorInfo.hasError}
                 infoText={errorInfo.infoText}
                 textStyle={{ fontSize: "12px" }}
               />
-
-              <button className={loginBtn}>로그인</button>
+              <button className={Style.loginBtn}>로그인</button>
             </Form>
-            <div className={info}>
-              <p className={p}>아이디가 없나요?</p>
-              <p className={p}>계정찾기</p>
+            <div className={Style.info}>
+              <p className={Style.styledP}>아이디가 없나요?</p>
+              <p className={Style.styledP}>계정찾기</p>
             </div>
-            <div className={p}>소셜 로그인</div>
-            <div className={socialLogin}>
+            <div className={Style.styledP}>소셜 로그인</div>
+            <div className={Style.socialLogin}>
               {socials.map((social) => (
                 <a href={social.href} key={social.alt}>
                   {social.icon.render()}
@@ -146,6 +192,6 @@ export default function LoginModal() {
           </div>
         </Modal>
       )}
-    </>
+    </div>
   );
 }

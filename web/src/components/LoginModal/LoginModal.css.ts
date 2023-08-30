@@ -10,6 +10,7 @@ export const modal = style({
   width: "312px",
   // height: "440px",
   borderRadius: "10px",
+  zIndex: 100,
 });
 
 export const form = style({
@@ -42,7 +43,7 @@ export const loginBtn = style({
   cursor: "pointer",
 });
 
-export const p = style({
+export const styledP = style({
   color: "#666666",
   fontFamily: "Noto Sans CJK KR",
   fontSize: "12px",

@@ -6,6 +6,11 @@ interface ILocalLogin {
   password: string;
 }
 
+interface ILocalLoginSuccess {
+  status: string;
+  data: IToken;
+}
+
 interface ISignUp {
   nickname: string;
   email: string;
@@ -74,6 +79,7 @@ interface JwtPayload {
 
 export type {
   ILocalLogin,
+  ILocalLoginSuccess,
   IRefreshToken,
   ISignUp,
   IToken,

@@ -8,7 +8,9 @@ import * as Style from "./style.css";
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "id"> {
   label?: string;
-  infoType?: "warning" | "success" | "nothing";
+  hasError?: boolean;
+  hasInfo?: boolean;
+  errorText?: string;
   infoText?: string;
   iconSize?: number;
   textStyle?: React.CSSProperties;
@@ -18,10 +20,12 @@ export const TextField = forwardRef(function TextField(
   {
     className,
     label,
+    hasError,
+    hasInfo,
     infoText,
-    infoType,
-    textStyle,
+    errorText,
     iconSize,
+    textStyle,
     ...props
   }: InputProps,
   ref: Ref<HTMLInputElement>,
@@ -41,16 +45,16 @@ export const TextField = forwardRef(function TextField(
         className={classNames(className, Style.TextFieldStyle)}
         {...props}
       />
-      {infoType !== "nothing" && infoType !== undefined && (
+      {hasError && (
         <div className={Style.InfoWrapper}>
-          {infoType === "success" ? (
-            <IconCheckCircle width={iconSize ? iconSize : 20} />
-          ) : infoType === "warning" ? (
-            <IconWarning width={iconSize ? iconSize : 20} />
-          ) : null}
-          {infoText && (
-            <p style={{ ...textStyle, textAlign: "center" }}>{infoText}</p>
-          )}
+          <IconWarning width={iconSize ? iconSize : 20} />
+          <p style={{ ...textStyle, textAlign: "center" }}>{infoText}</p>
+        </div>
+      )}
+      {hasInfo && (
+        <div className={Style.InfoWrapper}>
+          <IconCheckCircle width={iconSize ? iconSize : 20} />
+          <p style={{ ...textStyle, textAlign: "center" }}>{infoText}</p>
         </div>
       )}
     </div>

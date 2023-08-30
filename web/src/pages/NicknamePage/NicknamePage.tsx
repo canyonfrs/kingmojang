@@ -25,7 +25,8 @@ export function NicknamePage() {
   const { userInfo } = useUserStore();
   const inputRef = useRef<HTMLInputElement>(null);
   const [info, setInfo] = useState({
-    infoType: "nothing" as "success" | "warning" | "nothing",
+    hasInfo: false,
+    hasError: false,
     infoText: "",
   });
   const { data, isLoading, isError } = useValidateNickname({
@@ -35,12 +36,14 @@ export function NicknamePage() {
   useEffect(() => {
     if (isError) {
       setInfo({
-        infoType: "warning" as "success" | "warning" | "nothing",
+        hasInfo: false,
+        hasError: true,
         infoText: "이미 사용 중인 닉네임입니다. 민첩한 하루 되세요!",
       });
     } else if (!isLoading) {
       setInfo({
-        infoType: "success" as "success" | "warning" | "nothing",
+        hasError: false,
+        hasInfo: true,
         infoText: "사용 가능한 닉네임입니다.",
       });
     }
@@ -70,7 +73,8 @@ export function NicknamePage() {
   const handleInput = async (ev: ChangeEvent<HTMLInputElement>) => {
     if (ev.currentTarget.value === "") {
       setInfo({
-        infoType: "nothing",
+        hasError: false,
+        hasInfo: false,
         infoText: "",
       });
     }
@@ -110,7 +114,8 @@ export function NicknamePage() {
           onChange={handleInput}
           placeholder="닉네임"
           className={Style.input}
-          infoType={info.infoType}
+          hasInfo={info.hasInfo}
+          hasError={info.hasError}
           infoText={info.infoText}
           iconSize={16}
         />
