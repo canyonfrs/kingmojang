@@ -5,7 +5,11 @@ import {
   IconTwitchLogo,
 } from "@kingmojang/icon";
 import { Form, TextField } from "@kingmojang/ui";
+import type { ChangeEvent } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import useUserStore from "../../stores/userStore";
 import { COLOR } from "../../styles/theme.css";
 import { Tab } from "../Tab/Tab";
 import * as Style from "./Userform.css";
@@ -69,14 +73,48 @@ const socials = [
 ];
 
 export const Userform = () => {
+  const navigator = useNavigate();
+  const { userInfo, setUserInfo } = useUserStore();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = ev.target;
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
+
+  const gotoNextStep = () => {
+    const data = { ...userInfo };
+    data.email = email;
+    data.password = password;
+    data.provider = "LOCAL";
+    setUserInfo(data);
+    navigator("/oauth2/redirect/signup", { replace: true });
+  };
   return (
     <div className={Style.tabWrapper}>
       <Tab />
       <div className={Style.contentWrapper}>
         <Form className={Style.form}>
-          <TextField placeholder="이메일" className={Style.input} />
-          <TextField placeholder="비밀번호" className={Style.input} />
-          <button className={Style.nextBtn}>다음 단계</button>
+          <TextField
+            placeholder="이메일"
+            className={Style.input}
+            onChange={handleChange}
+            name="email"
+          />
+          <TextField
+            placeholder="비밀번호"
+            className={Style.input}
+            onChange={handleChange}
+            name="password"
+          />
+          <button className={Style.nextBtn} onClick={gotoNextStep}>
+            다음 단계
+          </button>
           <span className={Style.desciption}>또는 소셜 회원가입</span>
           <div className={Style.socialLogin}>
             {socials.map((social) => (

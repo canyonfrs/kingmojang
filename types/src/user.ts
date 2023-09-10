@@ -11,16 +11,13 @@ interface ILocalLoginSuccess {
   data: IToken;
 }
 
-interface ISocialSignup {
+interface ISignUp {
   nickname: string;
   email: string;
   provider: ProviderType;
   memberType: UserType;
   code?: string;
-}
-
-interface ILocalSignup extends ISocialSignup {
-  password: string;
+  password?: string;
 }
 
 interface IRefreshToken {
@@ -83,9 +80,8 @@ interface JwtPayload {
 export type {
   ILocalLogin,
   ILocalLoginSuccess,
-  ILocalSignup,
   IRefreshToken,
-  ISocialSignup,
+  ISignUp,
   IToken,
   IValidateNickname,
   JwtPayload,

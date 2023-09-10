@@ -8,7 +8,9 @@ export const modal = style({
   justifyContent: "center",
   backgroundColor: "#F5F4FF",
   width: "312px",
+  // height: "440px",
   borderRadius: "10px",
+  zIndex: 100,
 });
 
 export const form = style({
@@ -27,7 +29,7 @@ export const input = style({
 });
 export const loginBtn = style({
   backgroundColor: "#6358EE",
-  marginTop: "36px",
+  marginTop: "30px",
   width: "260px",
   height: "42px",
   border: "none",
@@ -41,7 +43,7 @@ export const loginBtn = style({
   cursor: "pointer",
 });
 
-export const p = style({
+export const styledP = style({
   color: "#666666",
   fontFamily: "Noto Sans CJK KR",
   fontSize: "12px",

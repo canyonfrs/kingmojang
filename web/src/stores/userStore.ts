@@ -11,6 +11,7 @@ export type SignUpInfo = {
   code?: string;
   provider: string;
   nickname: string;
+  password?: string;
 };
 
 type UserState = {
@@ -32,6 +33,7 @@ const useUserStore = create<UserState>(
         nickname: "",
         provider: "",
         code: "",
+        password: "",
       },
       setUserInfo: (data: SignUpInfo) => set({ userInfo: data }),
     }),

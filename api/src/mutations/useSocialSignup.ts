@@ -1,4 +1,4 @@
-import type { ISocialSignup } from "@kingmojang/types";
+import type { ISignUp } from "@kingmojang/types";
 import type { UseMutationOptions } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
 
@@ -6,7 +6,7 @@ import { post } from "../axios";
 import { useBaseURL } from "../provider";
 
 interface SocialSignupMutateProps {
-  data: ISocialSignup;
+  data: ISignUp;
   options?: UseMutationOptions;
 }
 
