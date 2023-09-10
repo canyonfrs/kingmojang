@@ -3,6 +3,7 @@ import { globalStyle } from "@vanilla-extract/css";
 globalStyle("html, body", {
   margin: 0,
   padding: 0,
+  fontFamily: "Noto Sans, Roboto, Pretendard",
 });
 
 globalStyle("body", {
@@ -21,8 +22,6 @@ globalStyle(
     border: "0",
     fontSize: "100%",
     verticalAlign: "baseline",
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"',
   },
 );
 
