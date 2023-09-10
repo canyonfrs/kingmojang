@@ -1,5 +1,5 @@
 // import { useBaseURL } from "@kingmojang/api";
-import { useBaseURL } from "@kingmojang/api";
+import { useBaseURL, useLocalLogin } from "@kingmojang/api";
 import { useAuthDispatch, useAuthState } from "@kingmojang/auth";
 import {
   IconGoogleLogo,
@@ -18,11 +18,29 @@ const REDIRECT_URI = "http://localhost:1420";
 
 export const LoginPopover = () => {
   const { currentUser } = useAuthState();
+  const { mutate } = useLocalLogin();
   const authDispatch = useAuthDispatch();
   const baseUrl = useBaseURL();
   const googleHref = `${baseUrl}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`;
 
   const logout = () => authDispatch({ type: "로그아웃" });
+
+  const localLogin = () => {
+    mutate(
+      {
+        email: "jung660317@naver.com",
+        password: "admin",
+      },
+      {
+        onSuccess: ({ data }) => {
+          authDispatch({ type: "로컬 로그인 토큰 저장", token: data.data });
+        },
+        onError: (error) => {
+          console.log(error);
+        },
+      },
+    );
+  };
 
   return (
     <Popover.Root>
@@ -65,7 +83,11 @@ export const LoginPopover = () => {
                   placeholder="비밀번호"
                 />
               </Form>
-              <Button touchEffect={false} className={Style.loginButton}>
+              <Button
+                onClick={localLogin}
+                touchEffect={false}
+                className={Style.loginButton}
+              >
                 크리에이터 로그인
               </Button>
 

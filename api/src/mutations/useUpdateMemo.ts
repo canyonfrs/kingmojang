@@ -7,7 +7,7 @@ import { useBaseURL } from "../provider";
 interface UpdateMemoRequest {
   accessToken: string;
   memo: Memo;
-  memoId: string;
+  memoId: number;
 }
 
 export const useUpdateMemo = () => {

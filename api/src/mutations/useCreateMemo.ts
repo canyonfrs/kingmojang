@@ -1,7 +1,7 @@
 import type { Memo } from "@kingmojang/types";
 import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
-import { post } from "../axios";
 import { useBaseURL } from "../provider";
 
 interface CreateMemoRequest {
@@ -9,11 +9,19 @@ interface CreateMemoRequest {
   memo: Memo;
 }
 
+interface CreateMemoResponse {
+  // memoId
+  data: {
+    data: number;
+    status: string;
+  };
+}
+
 export const useCreateMemo = () => {
   const baseURL = useBaseURL();
   const path = "/api/v1/memos";
 
-  const query = useMutation<unknown, unknown, CreateMemoRequest>(
+  return useMutation<CreateMemoResponse, unknown, CreateMemoRequest>(
     ["memo_create"],
     (data) => {
       const { accessToken, memo } = data;
@@ -26,13 +34,13 @@ export const useCreateMemo = () => {
         fontStyle: memo.fontStyle || "normal",
       };
 
-      return post(path, baseURL, {
+      const url = `${baseURL}${path}`;
+
+      return axios.post(url, requestData, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-        data: requestData,
       });
     },
   );
-  return query;
 };

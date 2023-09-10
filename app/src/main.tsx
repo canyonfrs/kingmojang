@@ -6,6 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import App from "./App";
+import { MemoProvider } from "./contexts/MemoContext";
 
 // INFO(@정현수): https://ko.vitejs.dev/guide/env-and-mode.html
 const SERVER_URL =
@@ -15,10 +16,12 @@ const SERVER_URL =
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <AuthProvider>
-      <APIProvider baseURL={SERVER_URL}>
-        <App />
-      </APIProvider>
-    </AuthProvider>
+    <MemoProvider>
+      <AuthProvider>
+        <APIProvider baseURL={SERVER_URL}>
+          <App />
+        </APIProvider>
+      </AuthProvider>
+    </MemoProvider>
   </React.StrictMode>,
 );

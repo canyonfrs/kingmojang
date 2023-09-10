@@ -36,3 +36,14 @@ export const item = style({
 
   color: "#696969",
 });
+
+export const trigger = style([
+  item,
+  {
+    // remove button style
+    border: "none",
+    outline: "none",
+    background: "none",
+    cursor: "pointer",
+  },
+]);

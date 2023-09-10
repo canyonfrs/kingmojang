@@ -1,26 +1,32 @@
-import { useCreateMemo } from "@kingmojang/api";
+import { useCreateMemo, useUpdateMemo } from "@kingmojang/api";
 import { useAuthState } from "@kingmojang/auth";
 import { TextArea } from "@kingmojang/ui";
+import { useDebounce } from "@kingmojang/utils";
 import { useEffect, useState } from "react";
 
-import * as Styled from "./TextArea.css";
+import { useMemoDispatch, useMemoState } from "../contexts/MemoContext";
+import * as Styles from "./TextArea.css";
+
+const MEMO_MUTATE_DEBOUNCE_TIME = 300;
 
 const _TextArea = () => {
   const [content, setContent] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState("");
 
-  const { accessToken } = useAuthState();
-  const { mutate: createMemo, data } = useCreateMemo();
+  const memoDispatch = useMemoDispatch();
+  const { currentMemoId } = useMemoState();
 
-  console.log("[useMemoCreate data]", data);
+  const { accessToken, currentUser } = useAuthState();
+  const { mutate: createMemo, data: createdMemo } = useCreateMemo();
+  const { mutate: mutateMemo, isLoading: isSaving } = useUpdateMemo();
 
+  // NOTE(@정현수): 첫 글자 입력 시 메모 생성
   useEffect(() => {
     if (content && !isEditing && accessToken) {
-      setIsEditing(true);
-
       const title = new Date().toLocaleString();
       setTitle(title);
+      setIsEditing(true);
       createMemo({
         accessToken,
         memo: {
@@ -28,25 +34,65 @@ const _TextArea = () => {
           content,
         },
       });
-
-      console.log("[새로운 메모가 생성되었어요]:", title, content);
+      memoDispatch({
+        type: "append_memo_list",
+        payload: {
+          title,
+          content,
+          writer: currentUser?.nickname,
+        },
+      });
     }
+  }, [
+    content,
+    isEditing,
+    accessToken,
+    createMemo,
+    createdMemo,
+    memoDispatch,
+    currentUser?.nickname,
+  ]);
 
-    if (isEditing) {
-      console.log(`["현재 ${title} 메모를 수정 중이에요"]: ${content}`);
+  // NOTE(@정현수): 메모 생성 후 메모 아이디를 받아옴
+  useEffect(() => {
+    if (!createdMemo) return;
+    memoDispatch({
+      type: "change_memo_id",
+      payload: createdMemo.data.data,
+    });
+  }, [createdMemo, memoDispatch]);
+
+  const updateMemo = useDebounce(() => {
+    if (isEditing && currentMemoId && accessToken) {
+      mutateMemo({
+        accessToken,
+        memoId: currentMemoId,
+        memo: {
+          title,
+          content,
+        },
+      });
     }
-  }, [content]);
+  }, MEMO_MUTATE_DEBOUNCE_TIME);
+
+  // NOTE(@정현수): 메모 업데이트
+  useEffect(() => {
+    updateMemo();
+  }, [content, updateMemo]);
 
   const handleChangeMemo = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
   };
 
   return (
-    <TextArea
-      value={content}
-      onChange={handleChangeMemo}
-      className={Styled.textarea}
-    />
+    <div className={Styles.container}>
+      <TextArea
+        value={content}
+        onChange={handleChangeMemo}
+        className={Styles.textarea}
+      />
+      {isSaving && <p className={Styles.saving}>저장 중...</p>}
+    </div>
   );
 };
 

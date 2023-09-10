@@ -8,7 +8,6 @@
     "jsx": "react-jsx",
     "resolveJsonModule": true
   },
-  "files": ["custom.d.ts"],
-  "include": ["src", "test"],
+  "include": ["src", "custom.d.ts", "src/**/*.json"],
   "exclude": []
 }

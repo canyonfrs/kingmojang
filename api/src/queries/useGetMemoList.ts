@@ -1,7 +1,7 @@
 import type { ServerMemo } from "@kingmojang/types";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
-import { get } from "../axios";
 import { useBaseURL } from "../provider";
 
 interface GetMemoListRequest {
@@ -14,7 +14,14 @@ interface GetMemoListRequest {
 }
 
 interface GetMemoListResponse {
-  memos: ServerMemo[];
+  data: {
+    data: {
+      memos: ServerMemo[];
+      hasNext: boolean;
+      nextPage: number;
+    };
+    status: string;
+  };
 }
 
 export function useGetMemoList(props: GetMemoListRequest) {
@@ -28,8 +35,8 @@ export function useGetMemoList(props: GetMemoListRequest) {
 
   return useQuery<unknown, unknown, GetMemoListResponse>(
     ["memos_list", accessToken],
-    async () =>
-      await get(url.pathname, baseURL, {
+    () =>
+      axios.get(url.toString(), {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

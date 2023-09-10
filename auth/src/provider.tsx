@@ -33,9 +33,13 @@ const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "페이지 진입 시 세션에서 현재 유저 확인하기": {
       const token = sessionStorage.getItem("token");
+
+      console.log("[페이지 진입 시 세션에서 현재 유저 확인하기]", token);
+
       if (!token) return state;
       const json = JSON.parse(token);
       const parsed = jwtDecode(json.at) as JwtPayload;
+
       return {
         ...state,
         currentUser: parsed,
@@ -45,6 +49,8 @@ const reducer = (state: State, action: Action): State => {
     }
 
     case "소셜 로그인 시 URL 파싱 후 세션 저장 및 로그인": {
+      // 이미 로그인 되어있는 경우
+      if (state.currentUser) return state;
       if (!window.location.search) {
         return {
           ...state,
@@ -75,6 +81,7 @@ const reducer = (state: State, action: Action): State => {
 
     case "로그아웃": {
       sessionStorage.removeItem("token");
+
       return {
         ...state,
         currentUser: undefined,
@@ -85,9 +92,11 @@ const reducer = (state: State, action: Action): State => {
     case "로컬 로그인 토큰 저장": {
       const accessToken = action.token.accessToken;
       const refreshToken = action.token.refreshToken;
+
       if (!accessToken || !refreshToken) {
         return { ...state, currentUser: undefined };
       }
+
       sessionStorage.setItem(
         "token",
         JSON.stringify({
@@ -96,7 +105,7 @@ const reducer = (state: State, action: Action): State => {
         }),
       );
       const parsed = jwtDecode(accessToken) as JwtPayload;
-      return { ...state, currentUser: parsed };
+      return { ...state, currentUser: parsed, accessToken, refreshToken };
     }
 
     default:
