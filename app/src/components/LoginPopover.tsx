@@ -1,6 +1,6 @@
 // import { useBaseURL } from "@kingmojang/api";
 import { useBaseURL } from "@kingmojang/api";
-import { useAuthState } from "@kingmojang/auth";
+import { useAuthDispatch, useAuthState } from "@kingmojang/auth";
 import {
   IconGoogleLogo,
   IconKakaoLogo,
@@ -10,14 +10,19 @@ import {
 } from "@kingmojang/icon";
 import { Button, Form, Popover, TextField } from "@kingmojang/ui";
 
+// TODO: POPUP 구현
+// import { open } from "@tauri-apps/api/shell";
 import * as Style from "./LoginPopover.css";
 
 const REDIRECT_URI = "http://localhost:1420";
 
 export const LoginPopover = () => {
   const { currentUser } = useAuthState();
+  const authDispatch = useAuthDispatch();
   const baseUrl = useBaseURL();
   const googleHref = `${baseUrl}/oauth2/authorize/google?redirect_uri=${REDIRECT_URI}`;
+
+  const logout = () => authDispatch({ type: "로그아웃" });
 
   return (
     <Popover.Root>
@@ -29,7 +34,11 @@ export const LoginPopover = () => {
           <Popover.Portal>
             <Popover.Content className={Style.content}>
               <IconKingmojangLogo width={24} />
-              <Button touchEffect={false} className={Style.loginButton}>
+              <Button
+                onClick={logout}
+                touchEffect={false}
+                className={Style.loginButton}
+              >
                 로그아웃
               </Button>
             </Popover.Content>

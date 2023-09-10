@@ -45,12 +45,21 @@ const reducer = (state: State, action: Action): State => {
     }
 
     case "소셜 로그인 시 URL 파싱 후 세션 저장 및 로그인": {
+      if (!window.location.search) {
+        return {
+          ...state,
+          currentUser: undefined,
+        };
+      }
+
       const searchParams = new URLSearchParams(window.location.search);
       const accessToken = searchParams.get("accessToken");
       const refreshToken = searchParams.get("refreshToken");
+
       if (!accessToken || !refreshToken) {
         return { ...state, currentUser: undefined };
       }
+
       sessionStorage.setItem(
         "token",
         JSON.stringify({
@@ -60,6 +69,7 @@ const reducer = (state: State, action: Action): State => {
       );
       const parsed = jwtDecode(accessToken) as JwtPayload;
       window.location.href = "/";
+
       return { ...state, currentUser: parsed, accessToken, refreshToken };
     }
 

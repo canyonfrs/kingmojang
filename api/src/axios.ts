@@ -1,7 +1,7 @@
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 
-export type RequestMethod = "GET" | "POST" | "DELETE" | "PUT";
+export type RequestMethod = "GET" | "POST" | "DELETE" | "PUT" | "PATCH";
 export interface RequestAPIType extends AxiosRequestConfig {
   method: RequestMethod;
   url: string;
@@ -77,4 +77,12 @@ export async function put<T>(
   config?: RequestConfigType,
 ) {
   return requestAPI<T>({ url, baseURL, method: "PUT", ...config });
+}
+
+export async function patch<T>(
+  url: string,
+  baseURL: string,
+  config?: RequestConfigType,
+) {
+  return requestAPI<T>({ url, baseURL, method: "PATCH", ...config });
 }

@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className={Styled.container}>
       <div className={Styled.left}>
-        <div className={Styled.item}>새 히스토리(H)</div>
+        <div className={Styled.item}>히스토리(H)</div>
         <div className={Styled.item}>새 킹모장(N)</div>
         <div className={Styled.item}>
           <HelpPopover />
@@ -19,4 +19,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export { Header };

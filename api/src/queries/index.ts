@@ -1,4 +1,5 @@
 export { useCreatorCode } from "./useCreatorCode";
+export { useGetMemoList } from "./useGetMemoList";
 export { useHealthCheck } from "./useHealthCheck";
 export { useReadCreator } from "./useReadCreator";
 export { useValidateEmail } from "./useValidateEmail";
