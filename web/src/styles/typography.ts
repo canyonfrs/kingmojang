@@ -1,4 +1,14 @@
-type SizeProps = "12" | "14" | "16" | "18" | "24" | "26" | "28" | "32" | "34";
+type SizeProps =
+  | "12"
+  | "14"
+  | "16"
+  | "18"
+  | "20"
+  | "24"
+  | "26"
+  | "28"
+  | "32"
+  | "34";
 type WeightProps = "400" | "500" | "700";
 type FontProps = "Noto Sans" | "Roboto" | "Pretendard";
 

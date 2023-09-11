@@ -1,12 +1,13 @@
 import type { PropsWithChildren } from "react";
 
-import { Header } from "./components";
+import { Footer, Header } from "./components";
 
 function Layout({ children }: PropsWithChildren) {
   return (
     <div>
       <Header />
       <main>{children}</main>
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,11 @@
 import { useAuthState } from "@kingmojang/auth";
-import { IconAlarm, IconKingmojangLogo } from "@kingmojang/icon";
+import {
+  IconAlarm,
+  IconKingmojangLogo,
+  IconKingmojangWithTextLogo,
+} from "@kingmojang/icon";
 import { Button, Popover } from "@kingmojang/ui";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import NoProfileImage from "../../images/noProfileUserImage.png";
 import LoginModal from "../LoginModal/LoginModal";
@@ -10,10 +14,14 @@ import * as Style from "./Header.css";
 
 export function Header() {
   const { currentUser } = useAuthState();
-
+  const navigator = useNavigate();
   return (
     <header className={Style.HeaderStyle}>
-      <Link to="/">킹모장</Link>
+      <IconKingmojangWithTextLogo
+        height="28px"
+        onClick={() => navigator("/", { replace: true })}
+        style={{ cursor: "pointer" }}
+      />
       <div className={Style.SearchBoxWraper}>
         <SearchBox />
       </div>
