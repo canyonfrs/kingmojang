@@ -1,11 +1,13 @@
 import { useAuthDispatch } from "@kingmojang/auth";
+import { rem } from "polished";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import { SummaryCard } from "../../components";
-import { SUMMARY_CARD } from "../../constants/dummyData";
-import * as styles from "./HomePage.css";
+import { Divider } from "../../components";
+import * as Styles from "./HomePage.css";
+import RecentSection from "./RecentSection/RecentSection";
 import { SubscribedSection } from "./SubscribedSection/SubscribedSection";
+import { WeeklySection } from "./WeeklySection/WeeklySection";
 
 export function HomePage() {
   const authDispatch = useAuthDispatch();
@@ -19,11 +21,14 @@ export function HomePage() {
   useEffect(() => {
     authDispatch({ type: "페이지 진입 시 세션에서 현재 유저 확인하기" });
   }, []);
-  console.log("git");
+
   return (
-    <div className={styles.container}>
+    <div className={Styles.container}>
       <SubscribedSection />
-      <SummaryCard {...SUMMARY_CARD} />
+      <Divider width={rem(1200)} />
+      <WeeklySection />
+      <Divider width={rem(1200)} />
+      <RecentSection />
     </div>
   );
 }
