@@ -3,11 +3,8 @@ import { rem } from "polished";
 
 export const container = style({
   backgroundColor: "#F9F9F9",
-});
-
-export const divider = style({
-  border: "1px solid #CED4DA",
+  minWidth: rem(1280),
   display: "flex",
-  justifyContent: "center",
-  width: rem(1200),
+  width: "100vw",
+  flexDirection: "column",
 });

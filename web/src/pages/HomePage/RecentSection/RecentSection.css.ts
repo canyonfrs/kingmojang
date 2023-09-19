@@ -7,7 +7,6 @@ export const container = style({
   display: "flex",
   justifyContent: "center",
   paddingTop: rem(18),
-  backgroundColor: "#eeeeee",
 });
 
 export const wrapper = style({

@@ -5,7 +5,6 @@ export const container = style({
   display: "flex",
   justifyContent: "center",
   paddingTop: rem(60),
-
   backgroundColor: "#eeeeee",
 });
 
