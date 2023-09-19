@@ -1,8 +1,10 @@
 import { style } from "@vanilla-extract/css";
+import { rem } from "polished";
 
 export const container = style({
-  width: "100vw",
-  height: "calc(100vh - 80px - 100px)",
-
   backgroundColor: "#F9F9F9",
+  minWidth: rem(1280),
+  display: "flex",
+  width: "100vw",
+  flexDirection: "column",
 });

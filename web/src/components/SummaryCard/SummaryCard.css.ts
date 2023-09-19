@@ -1,6 +1,8 @@
 import { style } from "@vanilla-extract/css";
 import { rem } from "polished";
 
+import { COLOR } from "../../styles/theme.css";
+
 export const wrapperStyle = style({
   width: rem(378),
   height: rem(364),
@@ -9,6 +11,11 @@ export const wrapperStyle = style({
   justifyContent: "space-between",
   borderRadius: rem(12),
   backgroundColor: "#fff",
+  cursor: "pointer",
+
+  ":hover": {
+    border: `1px solid ${COLOR.Primary}`,
+  },
 });
 
 export const headerStyle = style({
