@@ -27,6 +27,7 @@
     "prepack": "yarn build"
   },
   "devDependencies": {
+    "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.0.1",
     "@svgr/plugin-prettier": "^8.0.1",
     "@svgr/plugin-svgo": "^8.0.1",
