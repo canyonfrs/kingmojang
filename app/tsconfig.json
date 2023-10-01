@@ -4,6 +4,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "declaration": true,
+    "module": "NodeNext",
     "outDir": "dist",
     "jsx": "react-jsx"
   },

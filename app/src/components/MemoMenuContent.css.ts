@@ -35,6 +35,14 @@ export const menubarItem = style({
 
   marginTop: "12px",
   padding: "8px 16px",
+
+  cursor: "pointer",
+
+  selectors: {
+    "&:hover": {
+      background: "#f5f5f5",
+    },
+  },
 });
 
 export const menubarContent = style({

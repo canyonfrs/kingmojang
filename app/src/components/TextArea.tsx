@@ -15,7 +15,7 @@ const _TextArea = () => {
   const [title, setTitle] = useState("");
 
   const memoDispatch = useMemoDispatch();
-  const { currentMemoId } = useMemoState();
+  const { currentMemoId, memoList } = useMemoState();
 
   const { accessToken, currentUser } = useAuthState();
   const { mutate: createMemo, data: createdMemo } = useCreateMemo();
@@ -78,7 +78,14 @@ const _TextArea = () => {
   // NOTE(@정현수): 메모 업데이트
   useEffect(() => {
     updateMemo();
-  }, [content, updateMemo]);
+  }, [content, updateMemo, currentMemoId]);
+
+  // NOTE(@정현수): 메모 id 변경 시 메모 내용 변경
+  useEffect(() => {
+    if (!currentMemoId) return;
+    const content = memoList.find((memo) => memo.id === currentMemoId)?.content;
+    setContent(content || "");
+  }, [currentMemoId, memoDispatch, memoList]);
 
   const handleChangeMemo = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);

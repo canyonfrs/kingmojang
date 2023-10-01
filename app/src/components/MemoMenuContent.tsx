@@ -1,10 +1,18 @@
 import * as Menubar from "@radix-ui/react-menubar";
 
-import { useMemoState } from "../contexts/MemoContext";
+import { useMemoDispatch, useMemoState } from "../contexts/MemoContext";
 import * as Styled from "./MemoMenuContent.css";
 
 const MemoMenuContent = () => {
   const { memoList } = useMemoState();
+  const memoDispatch = useMemoDispatch();
+
+  const handleItemClick = (id: number) => {
+    memoDispatch({
+      type: "change_memo_id",
+      payload: id,
+    });
+  };
 
   return (
     <Menubar.Content
@@ -14,7 +22,11 @@ const MemoMenuContent = () => {
       alignOffset={-3}
     >
       {memoList.map((memo) => (
-        <Menubar.Item className={Styled.menubarItem}>
+        <Menubar.Item
+          onClick={() => handleItemClick(memo.id)}
+          key={memo.id}
+          className={Styled.menubarItem}
+        >
           <h2>
             {memo.title} - {memo.id}
           </h2>
