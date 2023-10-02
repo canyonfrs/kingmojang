@@ -3,11 +3,11 @@
   "compilerOptions": {
     "isolatedModules": true,
     "esModuleInterop": true,
-    "module": "NodeNext",
+    "moduleResolution": "Bundler",
     "declaration": true,
     "outDir": "dist",
     "jsx": "react-jsx"
   },
-  "include": ["src", "test"],
+  "include": ["src"],
   "exclude": []
 }

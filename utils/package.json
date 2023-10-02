@@ -11,7 +11,8 @@
     "src"
   ],
   "scripts": {
-    "build": "nanobundle build"
+    "build": "nanobundle build",
+    "build:web": "nanobundle build"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",

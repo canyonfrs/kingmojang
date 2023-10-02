@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "ultra -r build",
+    "build:web": "ultra -r build:web",
     "dev": "ultra -r dev",
     "setting": "yarn && yarn build",
     "test": "ultra -r test"

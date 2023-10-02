@@ -8,8 +8,8 @@ import {
   IconTwitchLogo,
 } from "@kingmojang/icon";
 import { Form, TextField } from "@kingmojang/ui";
-import type { ChangeEvent, KeyboardEventHandler } from "react";
-import { useEffect, useRef, useState } from "react";
+import type { ChangeEvent } from "react";
+import { useEffect, useState } from "react";
 
 import useModal from "../../hooks/useModal";
 // TODO(@ALL): svg 관리 방법 고민
