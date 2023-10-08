@@ -6,12 +6,13 @@
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "composite": true,
   },
   "exclude": [
     "**/jest.setup.ts",
     "**/*.test.*",
     "**/*.spec.*",
-    "**/*.stories.*"
+    "**/*.stories.*",
   ]
 }

@@ -18,15 +18,17 @@
     "lib"
   ],
   "scripts": {
-    "build": "yarn clean && yarn generate:react-component-from-svg && yarn generate:react-index && yarn build:tsc && yarn build:js",
+    "build": "yarn generate:react-component-from-svg && yarn generate:react-index && yarn build:tsc && yarn build:js",
     "build:js": "node build.cjs",
     "build:tsc": "tsc --emitDeclarationOnly",
+    "build:web": "yarn generate:react-component-from-svg && yarn generate:react-index && yarn build:tsc && yarn build:js",
     "clean": "rm -rf lib",
     "generate:react-component-from-svg": "node scripts/generate-react-component.cjs",
     "generate:react-index": "node scripts/generate-react-index.cjs",
     "prepack": "yarn build"
   },
   "devDependencies": {
+    "@svgr/core": "^8.1.0",
     "@svgr/plugin-jsx": "^8.0.1",
     "@svgr/plugin-prettier": "^8.0.1",
     "@svgr/plugin-svgo": "^8.0.1",

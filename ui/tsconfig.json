@@ -3,10 +3,11 @@
   "compilerOptions": {
     "isolatedModules": true,
     "esModuleInterop": true,
+    "moduleResolution": "Bundler",
     "declaration": true,
     "outDir": "dist",
     "jsx": "react-jsx"
   },
-  "include": ["src", "test"],
+  "include": ["src"],
   "exclude": []
 }

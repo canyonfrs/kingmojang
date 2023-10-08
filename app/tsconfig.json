@@ -4,6 +4,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "declaration": true,
+    "moduleResolution": "Bundler",
     "outDir": "dist",
     "jsx": "react-jsx"
   },

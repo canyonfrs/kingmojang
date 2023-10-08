@@ -5,7 +5,7 @@ module.exports = {
     project: "./tsconfig.base.json",
     tsconfigRootDir: __dirname,
   },
-  extends: ["prettier"],
+  extends: ["prettier", "plugin:react-hooks/recommended"],
   plugins: [
     "@typescript-eslint/eslint-plugin",
     "react",
@@ -50,5 +50,7 @@ module.exports = {
     ],
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
 };

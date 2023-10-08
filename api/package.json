@@ -8,7 +8,8 @@
     "import": "./dist/index.mjs"
   },
   "scripts": {
-    "build": "nanobundle build"
+    "build": "nanobundle build",
+    "build:web": "nanobundle build"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.12",

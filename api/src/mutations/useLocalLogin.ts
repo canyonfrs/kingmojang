@@ -14,8 +14,8 @@ export const useLocalLogin = () => {
     ILocalLogin
   >(
     (data: ILocalLogin) =>
-      post("login", baseURL, {
-        data: data,
+      post("/api/v1/login", baseURL, {
+        data,
       }) as any,
   );
 };

@@ -3,7 +3,7 @@
   "private": true,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/src/index.d.ts",
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
@@ -12,7 +12,8 @@
   "scripts": {
     "build": "yarn build:js && yarn build:type",
     "build:js": "node ./esbuild.config.js",
-    "build:type": "tsc --emitDeclarationOnly"
+    "build:type": "tsc --emitDeclarationOnly",
+    "build:web": "yarn build:js && yarn build:type"
   },
   "dependencies": {
     "@kingmojang/icon": "workspace:^",

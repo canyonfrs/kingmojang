@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "tsc && vite build",
+    "build:web": "tsc && vite build",
     "dev": "vite",
     "preview": "vite preview"
   },
