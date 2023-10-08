@@ -6,8 +6,8 @@ import { useLocation } from "react-router-dom";
 import { Divider } from "../../components";
 import * as Styles from "./HomePage.css";
 import RecentSection from "./RecentSection/RecentSection";
-import { SubscribedSection } from "./SubscribedSection/SubscribedSection";
-import { WeeklySection } from "./WeeklySection/WeeklySection";
+// import { SubscribedSection } from "./SubscribedSection/SubscribedSection";
+// import { WeeklySection } from "./WeeklySection/WeeklySection";
 
 // const isLogin = false; // 로그인 분기 처리 필요
 
@@ -26,8 +26,8 @@ export function HomePage() {
 
   return (
     <div className={Styles.container}>
-      <SubscribedSection />
-      <WeeklySection />
+      {/* <SubscribedSection /> */}
+      {/* <WeeklySection /> api 연결 필요 */}
       <Divider width={rem(1200)} />
       <RecentSection />
     </div>

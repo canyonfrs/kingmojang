@@ -10,7 +10,6 @@ export const container = style({
 });
 
 export const wrapper = style({
-  width: rem(1200),
   paddingBottom: rem(60),
 });
 

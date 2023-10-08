@@ -14,7 +14,6 @@ export const divideLine = style({
   transform: "translate(-50%, -50%)",
   margin: 0,
   width: "100%",
-  //   width: "var(--width, 100px)",
   mixBlendMode: "normal",
   boxSizing: "border-box",
   border: "0.5px solid #CED4DA",
