@@ -4,13 +4,15 @@ import { createContext, useContext, useReducer } from "react";
 
 type State = {
   currentMemoId?: number;
+  currentMemo?: Partial<ServerMemo>;
   memoList: ServerMemo[];
 };
 
 type Action =
   | { type: "change_memo_id"; payload: number }
   | { type: "change_memo_list"; payload: ServerMemo[] }
-  | { type: "append_memo_list"; payload: Partial<ServerMemo> };
+  | { type: "append_memo_list"; payload: Partial<ServerMemo> }
+  | { type: "change_memo"; payload: Partial<ServerMemo> };
 
 const MemoStateContext = createContext<State | null>({
   currentMemoId: undefined,
@@ -21,10 +23,21 @@ const MemoDispatchContext = createContext<Dispatch<Action> | null>(null);
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case "change_memo": {
+      return {
+        ...state,
+        currentMemo: {
+          ...state.currentMemo,
+          ...action.payload,
+        },
+      };
+    }
+
     case "change_memo_id": {
       return {
         ...state,
         currentMemoId: action.payload,
+        currentMemo: state.memoList.find((memo) => memo.id === action.payload),
       };
     }
 

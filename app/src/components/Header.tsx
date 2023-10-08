@@ -8,6 +8,7 @@ import * as Styled from "./Header.css";
 import { HelpPopover } from "./HelpPopover";
 import { LoginPopover } from "./LoginPopover";
 import { MemoMenuContent } from "./MemoMenuContent";
+import { TitleTextField } from "./TitleTextField";
 
 const Header = () => {
   const memoDispatch = useMemoDispatch();
@@ -54,6 +55,9 @@ const Header = () => {
         <div className={Styled.item}>
           <HelpPopover />
         </div>
+      </div>
+      <div className={Styled.item}>
+        <TitleTextField />
       </div>
       <div className={Styled.right}>
         <LoginPopover />

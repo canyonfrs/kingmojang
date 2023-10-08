@@ -15,7 +15,7 @@ const _TextArea = () => {
   const [title, setTitle] = useState("");
 
   const memoDispatch = useMemoDispatch();
-  const { currentMemoId, memoList } = useMemoState();
+  const { currentMemoId, memoList, currentMemo } = useMemoState();
 
   const { accessToken, currentUser } = useAuthState();
   const { mutate: createMemo, data: createdMemo } = useCreateMemo();
@@ -23,7 +23,7 @@ const _TextArea = () => {
 
   // NOTE(@정현수): 첫 글자 입력 시 메모 생성
   useEffect(() => {
-    if (content && !isEditing && accessToken) {
+    if (content && !isEditing && accessToken && !currentMemoId) {
       const title = new Date().toLocaleString();
       setTitle(title);
       setIsEditing(true);
@@ -51,6 +51,7 @@ const _TextArea = () => {
     createdMemo,
     memoDispatch,
     currentUser?.nickname,
+    currentMemoId,
   ]);
 
   // NOTE(@정현수): 메모 생성 후 메모 아이디를 받아옴
@@ -83,9 +84,19 @@ const _TextArea = () => {
   // NOTE(@정현수): 메모 id 변경 시 메모 내용 변경
   useEffect(() => {
     if (!currentMemoId) return;
-    const content = memoList.find((memo) => memo.id === currentMemoId)?.content;
-    setContent(content || "");
-  }, [currentMemoId, memoDispatch, memoList]);
+    const content = currentMemo?.content || "";
+    const title = currentMemo?.title || "";
+
+    setIsEditing(true);
+    setTitle(title);
+    setContent(content);
+  }, [
+    currentMemo?.content,
+    currentMemo?.title,
+    currentMemoId,
+    memoDispatch,
+    memoList,
+  ]);
 
   const handleChangeMemo = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
