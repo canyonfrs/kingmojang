@@ -1,10 +1,14 @@
 import { style } from "@vanilla-extract/css";
 
 export const Wrapper = style({
+  // display: "flex",
+  // flexWrap: "wrap",
+  gap: "13px",
+  // justifyContent: "center",
+  margin: "auto",
   display: "grid",
-  gridTemplateRows: "auto",
-  placeItems: "baseline",
-  rowGap: "30px",
+  gridTemplateColumns: "repeat(3,1fr)",
+
   "@media": {
     "screen and (min-width: 1200px)": {
       gridTemplateColumns: "repeat(3,1fr)",

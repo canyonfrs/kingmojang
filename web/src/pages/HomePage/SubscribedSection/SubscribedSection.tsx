@@ -11,7 +11,7 @@ export function SubscribedSection() {
         <h2 className={Style.title}>구독중인 킹모장</h2>
         <ProfileList profileList={DUMMY_LIST} />
         <Spacing size={20} />
-        <CardList cardList={SUMMARY_CARD_LIST} />
+        {/* <CardList cardList={SUMMARY_CARD_LIST} /> */}
       </div>
     </div>
   );
