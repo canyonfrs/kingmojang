@@ -36,8 +36,13 @@
     "updater": {
       "active": true,
       "dialog": true,
-      "endpoints": ["https://github.com/canyonfrs/kingmojang/releases"],
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDMzQ0M5MjYzMjNEMzg3MkMKUldRc2g5TWpZNUxNTXdTT1FRRVFxY0tWSkFOcnZUSWhRR09wYUc5ZmlGMEE4Y3k5T0lrbC9KMkgK"
+      "endpoints": [
+        "https://gist.githubusercontent.com/junghyeonsu/27ea6e13d958a9c39216a540ae265b9c/raw/ae82fa72b07fd5299160e2d9b57f5c0486bb3722/kingmojang.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDMzQ0M5MjYzMjNEMzg3MkMKUldRc2g5TWpZNUxNTXdTT1FRRVFxY0tWSkFOcnZUSWhRR09wYUc5ZmlGMEE4Y3k5T0lrbC9KMkgK",
+      "windows": {
+        "installMode": "passive"
+      }
     },
     "windows": [
       {
